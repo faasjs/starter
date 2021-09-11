@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+    command: sleep infinity
+    tty: true
+    environment:
+      SECRET_KNEX_CONNECTION: postgresql://development@pg/development
+    volumes:
+      - ..:/root/app:delegated
+      - /root/app/api/node_modules
+      - /root/app/api/tmp
+      - ~/.ssh:/root/.ssh:delegated
+    ports:
+      - 3000:3000
+      - 3001:3001
+    depends_on:
+      - pg
+      - pg_testing1
+  pg:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: development
+      POSTGRES_DB: development
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ../api/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+  pg_testing1:
+    image: postgres:alpine
+    environment:
+      POSTGRES_DB: testing
+      POSTGRES_USER: testing
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ../api/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql

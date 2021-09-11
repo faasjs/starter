@@ -1,0 +1,19 @@
+{
+	"name": "faasjs-starter-dev",
+	"dockerComposeFile": "docker-compose.yaml",
+	"service": "app",
+	"workspaceFolder": "/root/app",
+	"forwardPorts": [
+		3000,
+		3001
+	],
+	"settings": {
+		"terminal.integrated.defaultProfile.linux": "zsh"
+	},
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"github.copilot",
+		"eamodio.gitlens",
+		"zfben.faasjs-snippets"
+	]
+}

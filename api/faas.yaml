@@ -1,0 +1,25 @@
+defaults:
+  providers:
+    tencentcloud:
+      type: '@faasjs/tencentcloud'
+      config:
+        appId:
+        secretId:
+        secretKey:
+        region: ap-shanghai
+  plugins:
+    cloud_function:
+      provider: tencentcloud
+      type: cloud_function
+    http:
+      provider: tencentcloud
+      type: http
+    knex:
+      config:
+        client: pg
+        pool:
+          min: 0
+          max: 10
+development:
+testing:
+production:

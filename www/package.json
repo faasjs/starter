@@ -1,0 +1,63 @@
+{
+  "name": "@faasjs/starter-www",
+  "private": "true",
+  "version": "0.0.0",
+  "dependencies": {
+    "@ant-design/icons": "*",
+    "@faasjs/eslint-config-react": "^0.0.2-beta.234",
+    "@faasjs/react": "^0.0.2-beta.239",
+    "@sucrase/webpack-loader": "*",
+    "antd": "*",
+    "html-loader": "*",
+    "html-webpack-plugin": "*",
+    "less-loader": "*",
+    "lodash": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-router-dom": "*",
+    "style-loader": "*",
+    "url-loader": "*",
+    "uuid": "*",
+    "webpack": "*",
+    "webpack-cli": "*",
+    "webpack-dev-server": "*"
+  },
+  "devDependencies": {
+    "@sucrase/jest-plugin": "*",
+    "@testing-library/jest-dom": "*",
+    "@testing-library/react": "*",
+    "@types/jest": "*",
+    "@types/lodash": "*",
+    "@types/node": "*",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "@types/react-router-dom": "*",
+    "@types/uuid": "*",
+    "jest": "*"
+  },
+  "scripts": {
+    "dev": "yarn && webpack serve --progress --config .webpack/dev.config.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@faasjs/react"
+    ]
+  },
+  "jest": {
+    "rootDir": "src",
+    "transform": {
+      ".(jsx|tsx?)": "@sucrase/jest-plugin"
+    },
+    "testEnvironment": "jsdom",
+    "collectCoverageFrom": [
+      "**/*.tsx"
+    ],
+    "testRegex": "/*\\.test\\.tsx?$",
+    "moduleNameMapper": {
+      "^libs(.*)$": "<rootDir>/libs$1"
+    },
+    "setupFilesAfterEnv": [
+      "./jest.setup.ts"
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "folders": [
+    {
+      "name": "api",
+      "path": "api"
+    },
+    {
+      "name": "www",
+      "path": "www"
+    },
+    {
+      "name": "root",
+      "path": "."
+    }
+  ],
+  "settings": {
+		"editor.detectIndentation": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": true,
+    "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.maxColumn": 200,
+    "editor.smoothScrolling": true,
+    "editor.cursorBlinking": "phase",
+    "telemetry.enableCrashReporter": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.editor.labelFormat": "medium",
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/coverage": true,
+      "**/dist": true,
+      "**/tmp": true
+    },
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/.cache": true,
+      "**/.ssh": true,
+      "**/.gitconfig": true
+    },
+    "eslint.packageManager": "yarn",
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "vue"
+    ],
+    "files.eol": "\n",
+    "terminal.integrated.scrollback": 10000,
+    "sqltools.connections": [
+      {
+        "previewLimit": 50,
+        "server": "postgres",
+        "port": 5432,
+        "askForPassword": false,
+        "driver": "PostgreSQL",
+        "name": "development",
+        "connectString": "postgresql://development@pg/development"
+      }
+    ]
+	}
+}

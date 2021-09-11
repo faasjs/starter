@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "strictNullChecks": false,
+    "target": "ES2021",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "baseUrl": "."
+  }
+}

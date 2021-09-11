@@ -1,0 +1,42 @@
+{
+  "name": "@faasjs/starter-api",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "yarn && yarn faas server -p 3001",
+    "test": "jest --forceExit --detectOpenHandles --logHeapUsage"
+  },
+  "dependencies": {
+    "@faasjs/eslint-config-recommended": "^0.0.2-beta.234",
+    "@faasjs/knex": "^0.0.2-beta.238",
+    "faasjs": "^0.0.2-beta.238",
+    "pg": "*",
+    "uuid": "*"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@faasjs/recommended"
+    ]
+  },
+  "jest": {
+    "verbose": false,
+    "transform": {
+      ".(jsx|tsx?)": "@sucrase/jest-plugin"
+    },
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "**/*.ts"
+    ],
+    "testRegex": "/*\\.test\\.ts$",
+    "modulePathIgnorePatterns": [
+      "/tmp/"
+    ],
+    "moduleNameMapper": {
+      "^libs(.*)$": "<rootDir>/libs$1"
+    },
+    "setupFilesAfterEnv": [
+      "@faasjs/test/lib/jest.setup.js",
+      "./libs/jest.setup.ts"
+    ]
+  }
+}
