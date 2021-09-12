@@ -67,7 +67,16 @@
         "driver": "PostgreSQL",
         "name": "development",
         "connectString": "postgresql://development@pg/development"
-      }
+      },
+      {
+        "previewLimit": 50,
+        "server": "postgres",
+        "port": 5432,
+        "askForPassword": false,
+        "driver": "PostgreSQL",
+        "name": "testing",
+        "connectString": "postgresql://testing@pg_testing1/testing"
+      },
     ]
 	}
 }

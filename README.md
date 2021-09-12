@@ -1,5 +1,8 @@
 # FaasJS Demo
 
+[![Api-Unit](https://github.com/faasjs/starter/actions/workflows/api-unit.yml/badge.svg)](https://github.com/faasjs/starter/actions/workflows/api-unit.yml)
+[![Www-Unit](https://github.com/faasjs/starter/actions/workflows/www-unit.yml/badge.svg)](https://github.com/faasjs/starter/actions/workflows/www-unit.yml)
+
 ### 准备动作
 
 - 将 OS X 升级至最新稳定版
