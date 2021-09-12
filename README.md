@@ -15,4 +15,4 @@
 2. 在代码库中执行 `code .code-workspace`
 3. 点击左下角绿色按钮，选择 `Remote-Containers: Reopen in Container`
 4. 在容器中打开命令行，输入 `start api www`
-5. 待编译成功后，在浏览器打开 `http://www.faasjs.localhost:3000/` 确认是否启动成功
+5. 待编译成功后，在浏览器打开 `http://localhost:3000/` 确认是否启动成功

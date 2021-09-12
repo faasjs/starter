@@ -61,7 +61,8 @@ module.exports = {
     react: 'React',
     'react-dom': 'ReactDOM',
     'react-router-dom': 'ReactRouterDOM',
-    antd: 'antd'
+    antd: 'antd',
+    '@ant-design/icons': 'icons',
   },
   plugins: [
     new HtmlWebpackPlugin({

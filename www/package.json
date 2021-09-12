@@ -36,7 +36,8 @@
     "jest": "*"
   },
   "scripts": {
-    "dev": "yarn && webpack serve --progress --config .webpack/dev.config.js"
+    "dev": "yarn && webpack serve --progress --config .webpack/dev.config.js",
+    "test": "jest"
   },
   "eslintConfig": {
     "extends": [

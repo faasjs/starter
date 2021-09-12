@@ -1,0 +1,22 @@
+name: Www Unit
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Install
+        run: |-
+          cd www
+          yarn install
+
+      - name: Test
+        run: |-
+          cd www
+          yarn jest --forceExit --coverage --ci

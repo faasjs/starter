@@ -44,11 +44,11 @@ export default function TodoList () {
           item.status === '未完成' ? <CheckOutlined
             key='done'
             style={ { cursor: 'pointer' } }
-            onClick={ async () => faas('todo/item/done', { id: item.id }).finally(() => list.reload()) }
+            onClick={ async () => faas('todo/item/done', { id: item.id }).finally(async () => list.reload()) }
           /> : <UndoOutlined
             key='undo'
             style={ { cursor: 'pointer' } }
-            onClick={ async () => faas('todo/item/undo', { id: item.id }).finally(() => list.reload()) }
+            onClick={ async () => faas('todo/item/undo', { id: item.id }).finally(async () => list.reload()) }
           />
         ] }>
           <Typography.Text>{item.title}</Typography.Text>
