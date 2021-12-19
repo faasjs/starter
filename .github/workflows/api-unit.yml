@@ -1,6 +1,12 @@
 name: Api Unit
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - 'api/**'
+  pull_request:
+    paths:
+      - 'api/**'
 
 jobs:
   test:
@@ -17,19 +23,19 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+            - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          fetch-depth: 1
-
+          node-version: '14'
+          cache: 'npm'
       - name: Install
-        run: |-
+        run: |
+          npm install -g npm@latest
           cd api
-          yarn install
-
+          npm install
       - name: Test
         run: |-
           cd api
-          yarn jest --forceExit --coverage --ci
+          npm exec jest -- --forceExit --coverage --ci
         env:
           SECRET_KNEX_CONNECTION: postgres://postgres:postgres@localhost:5432/testing

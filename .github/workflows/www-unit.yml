@@ -1,22 +1,28 @@
 name: Www Unit
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - 'www/**'
+  pull_request:
+    paths:
+      - 'www/**'
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          fetch-depth: 1
-
+          node-version: '14'
+          cache: 'npm'
       - name: Install
-        run: |-
+        run: |
+          npm install -g npm@latest
           cd www
-          yarn install
-
+          npm install
       - name: Test
         run: |-
           cd www
-          yarn jest --forceExit --coverage --ci
+          npm exec jest -- --forceExit --coverage --ci
