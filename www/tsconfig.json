@@ -9,6 +9,7 @@
     "allowJs": true,
     "strict": true,
     "strictNullChecks": false,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "jsx": "react-jsx",
     "baseUrl": "src"

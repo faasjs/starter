@@ -5,7 +5,7 @@ let mockedData: any[] = []
 
 jest.mock('@faasjs/react', function () {
   return {
-    FaasClient: function () {
+    FaasReactClient: function () {
       return {
         useFaas: function () {
           return { data: mockedData }
