@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "dev": "yarn && yarn faas server -p 3001",
+    "dev": "faas server -p 3001",
     "test": "jest --forceExit --detectOpenHandles --logHeapUsage"
   },
   "dependencies": {

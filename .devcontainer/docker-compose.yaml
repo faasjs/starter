@@ -12,6 +12,7 @@ services:
       - ..:/root/app:delegated
       - /root/app/api/node_modules
       - /root/app/api/tmp
+      - /root/app/www/node_modules
       - ~/.ssh:/root/.ssh:delegated
     ports:
       - 3000:3000

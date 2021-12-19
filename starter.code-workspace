@@ -48,7 +48,7 @@
       "**/.ssh": true,
       "**/.gitconfig": true
     },
-    "eslint.packageManager": "yarn",
+    "eslint.packageManager": "npm",
     "eslint.validate": [
       "javascript",
       "javascriptreact",
