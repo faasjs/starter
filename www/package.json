@@ -14,7 +14,6 @@
     "lodash": "*",
     "react": "*",
     "react-dom": "*",
-    "react-router-dom": "*",
     "style-loader": "*",
     "url-loader": "*",
     "uuid": "*",
@@ -31,7 +30,6 @@
     "@types/node": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@types/react-router-dom": "*",
     "@types/uuid": "*",
     "jest": "*"
   },
