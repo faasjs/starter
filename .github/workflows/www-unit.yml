@@ -1,6 +1,7 @@
 name: Www Unit
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'www/**'
