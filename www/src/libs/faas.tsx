@@ -1,8 +1,8 @@
-import { FaasClient } from '@faasjs/react'
+import { FaasReactClient } from '@faasjs/react'
 import { notification } from 'antd'
 import React from 'react'
 
-const client = FaasClient({
+const client = FaasReactClient({
   domain: process.env.REACT_APP_API as string,
   onError (action: string) {
     return async function (res: any) {
