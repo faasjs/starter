@@ -1,6 +1,5 @@
 import { FaasReactClient } from '@faasjs/react'
 import { notification } from 'antd'
-import React from 'react'
 
 const client = FaasReactClient({
   domain: process.env.REACT_APP_API as string,
@@ -19,7 +18,6 @@ const client = FaasReactClient({
           description: `${action}`,
           duration: 10
         })
-      return Promise.reject(res)
     }
   }
 })

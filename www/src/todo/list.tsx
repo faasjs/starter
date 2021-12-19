@@ -2,10 +2,9 @@ import {
   Button, Input, List, Modal, Skeleton, Typography
 } from 'antd'
 import { CheckOutlined, UndoOutlined } from '@ant-design/icons'
-import React from 'react'
 import { faas, useFaas } from 'libs/faas'
 
-export default function TodoList () {
+export function TodoList () {
   const list = useFaas<{
     id: string
     title: string
@@ -16,8 +15,9 @@ export default function TodoList () {
 
   return <div style={ {
     maxWidth: '500px',
-    margin: '0 auto'
+    margin: '24px auto'
   } }>
+    <Typography.Title>待办事项</Typography.Title>
     <Button
       type='primary'
       onClick={ () => {
