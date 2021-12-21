@@ -6,7 +6,7 @@
     "@ant-design/icons": "*",
     "@faasjs/eslint-config-react": "^0.0.2-beta.234",
     "@faasjs/react": "^0.0.2-beta.239",
-    "@sucrase/webpack-loader": "*",
+    "swc-loader": "*",
     "antd": "*",
     "html-loader": "*",
     "html-webpack-plugin": "*",
@@ -22,7 +22,7 @@
     "webpack-dev-server": "*"
   },
   "devDependencies": {
-    "@sucrase/jest-plugin": "*",
+    "@swc/jest": "*",
     "@testing-library/jest-dom": "*",
     "@testing-library/react": "*",
     "@types/jest": "*",
@@ -45,7 +45,7 @@
   "jest": {
     "rootDir": "src",
     "transform": {
-      ".(jsx|tsx?)": "@sucrase/jest-plugin"
+      ".(jsx|tsx?)": "@swc/jest"
     },
     "testEnvironment": "jsdom",
     "collectCoverageFrom": [

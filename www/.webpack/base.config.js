@@ -19,9 +19,22 @@ module.exports = {
         include: path.resolve(__dirname, '..', 'src'),
         use: [
           {
-            loader: '@sucrase/webpack-loader',
+            loader: 'swc-loader',
             options: {
-              transforms: ['typescript', 'jsx'],
+              jsc: {
+                parser: {
+                  syntax: 'typescript',
+                  tsx: true,
+                  dynamicImport: true,
+
+                },
+                transform: {
+                  react: {
+                    runtime: 'automatic'
+                  }
+                },
+                target: 'es2021',
+              }
             }
           }
         ]
