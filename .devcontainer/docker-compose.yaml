@@ -2,17 +2,22 @@ version: '3'
 
 services:
   app:
-    build:
-      context: .
+    image: faasjs/vscode
     command: sleep infinity
     tty: true
     environment:
       SECRET_KNEX_CONNECTION: postgresql://development@pg/development
     volumes:
       - ..:/root/app:delegated
-      - /root/app/api/node_modules
-      - /root/app/api/tmp
-      - /root/app/www/node_modules
+
+      - /root/app/node_modules
+
+      - /root/app/packages/api/node_modules
+      - /root/app/packages/api/tmp
+
+      - /root/app/packages/www/node_modules
+
+      - ~/.npmrc:/root/.npmrc:delegated
       - ~/.ssh:/root/.ssh:delegated
     ports:
       - 3000:3000

@@ -1,5 +1,5 @@
 {
-  "name": "@faasjs/starter-www",
+  "name": "@faasjs-starter/www",
   "private": "true",
   "version": "0.0.0",
   "dependencies": {
@@ -34,7 +34,7 @@
     "jest": "*"
   },
   "scripts": {
-    "dev": "webpack serve --progress --config .webpack/dev.config.js",
+    "dev": "webpack-cli serve --progress --config .webpack/dev.config.js",
     "test": "jest"
   },
   "eslintConfig": {

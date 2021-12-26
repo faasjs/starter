@@ -10,10 +10,6 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
-    directory: "/api"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "npm"
-    directory: "/www"
+    directory: "/"
     schedule:
       interval: "daily"

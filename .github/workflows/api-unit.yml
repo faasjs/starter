@@ -29,11 +29,9 @@ jobs:
         with:
           node-version: '16'
           cache: 'npm'
-          cache-dependency-path: api/package-lock.json
       - name: Install
         run: |
           npm install -g npm@latest
-          cd api
           npm install
       - name: Test
         run: |-

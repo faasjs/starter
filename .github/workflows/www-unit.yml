@@ -18,11 +18,9 @@ jobs:
         with:
           node-version: '16'
           cache: 'npm'
-          cache-dependency-path: www/package-lock.json
       - name: Install
         run: |
           npm install -g npm@latest
-          cd www
           npm install
       - name: Test
         run: |-

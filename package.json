@@ -1,0 +1,15 @@
+{
+  "name": "@faasjs-starter/mono",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm:dev:*\"",
+    "dev:api": "npm run dev --workspace=packages/api",
+    "dev:www": "npm run dev --workspace=packages/www"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "concurrently": "*"
+  }
+}
