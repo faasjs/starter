@@ -7,7 +7,7 @@
     "test": "jest --forceExit"
   },
   "dependencies": {
-    "@faasjs/eslint-config-recommended": "^0.0.2-beta.234",
+    "@faasjs/eslint-config-recommended": "^0.0.2-beta.310",
     "@faasjs/knex": "^0.0.2-beta.314",
     "faasjs": "^0.0.2-beta.316",
     "@faasjs/tencentcloud": "^0.0.2-beta.302",
