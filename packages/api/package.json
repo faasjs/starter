@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "faas server -p 3001",
-    "test": "jest --forceExit"
+    "test": "jest --forceExit",
+    "ci": "jest --forceExit --coverage --ci"
   },
   "dependencies": {
     "@faasjs/eslint-config-recommended": "^0.0.2-beta.310",
@@ -36,7 +37,7 @@
       "^libs(.*)$": "<rootDir>/libs$1"
     },
     "setupFilesAfterEnv": [
-      "@faasjs/test/lib/jest.setup.js",
+      "@faasjs/test/dist/jest.setup.js",
       "./libs/jest.setup.ts"
     ]
   }

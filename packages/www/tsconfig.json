@@ -13,9 +13,5 @@
     "moduleResolution": "node",
     "jsx": "react-jsx",
     "baseUrl": "src"
-  },
-  "include": [
-    "src",
-    "./jest-setup.ts"
-  ]
+  }
 }

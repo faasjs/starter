@@ -35,7 +35,8 @@
   },
   "scripts": {
     "dev": "webpack-cli serve --progress --config .webpack/dev.config.js",
-    "test": "jest"
+    "test": "jest",
+    "ci": "jest --coverage --ci"
   },
   "eslintConfig": {
     "extends": [
@@ -43,7 +44,7 @@
     ]
   },
   "jest": {
-    "rootDir": "src",
+    "rootDir": ".",
     "transform": {
       ".(jsx|tsx?)": "@swc/jest"
     },
@@ -53,10 +54,10 @@
     ],
     "testRegex": "/*\\.test\\.tsx?$",
     "moduleNameMapper": {
-      "^libs(.*)$": "<rootDir>/libs$1"
+      "^libs(.*)$": "<rootDir>/src/libs$1"
     },
     "setupFilesAfterEnv": [
-      "./jest.setup.ts"
+      "./src/jest.setup.ts"
     ]
   }
 }

@@ -1,15 +1,7 @@
 {
   "folders": [
     {
-      "name": "api",
-      "path": "api"
-    },
-    {
-      "name": "www",
-      "path": "www"
-    },
-    {
-      "name": "root",
+      "name": "app",
       "path": "."
     }
   ],
@@ -29,7 +21,6 @@
     "editor.minimap.maxColumn": 200,
     "editor.smoothScrolling": true,
     "editor.cursorBlinking": "phase",
-    "telemetry.enableCrashReporter": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
     "workbench.editor.labelFormat": "medium",
     "search.exclude": {

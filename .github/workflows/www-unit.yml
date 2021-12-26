@@ -24,5 +24,4 @@ jobs:
           npm install
       - name: Test
         run: |-
-          cd packages/www
-          npm exec jest -- --forceExit --coverage --ci
+          npm run ci:www
