@@ -35,7 +35,7 @@ jobs:
           npm install
       - name: Test
         run: |-
-          cd api
+          cd packages/api
           npm exec jest -- --forceExit --coverage --ci
         env:
           SECRET_KNEX_CONNECTION: postgres://postgres:postgres@localhost:5432/testing
