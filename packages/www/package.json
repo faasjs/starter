@@ -5,7 +5,7 @@
   "dependencies": {
     "@ant-design/icons": "*",
     "@faasjs/eslint-config-react": "^0.0.2-beta.355",
-    "@faasjs/react": "^0.0.2-beta.355",
+    "@faasjs/react": "^0.0.2-beta.361",
     "swc-loader": "*",
     "antd": "*",
     "html-loader": "*",
