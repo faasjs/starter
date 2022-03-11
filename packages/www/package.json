@@ -6,22 +6,17 @@
     "@ant-design/icons": "*",
     "@faasjs/eslint-config-react": "^0.0.2-beta.384",
     "@faasjs/react": "^0.0.2-beta.384",
-    "swc-loader": "*",
     "antd": "*",
-    "html-loader": "*",
-    "html-webpack-plugin": "*",
-    "less-loader": "*",
     "lodash": "*",
     "react": "*",
     "react-dom": "*",
-    "style-loader": "*",
-    "url-loader": "*",
+    "react-router-dom": "*",
     "uuid": "*",
-    "webpack": "*",
-    "webpack-cli": "*",
-    "webpack-dev-server": "*"
+    "vite": "*",
+    "@vitejs/plugin-react": "*"
   },
   "devDependencies": {
+    "vite-tsconfig-paths": "*",
     "@swc/jest": "*",
     "@testing-library/jest-dom": "*",
     "@testing-library/react": "*",
@@ -34,7 +29,7 @@
     "jest": "*"
   },
   "scripts": {
-    "dev": "webpack-cli serve --progress --config .webpack/dev.config.js",
+    "dev": "vite",
     "test": "jest",
     "ci": "jest --coverage --ci"
   },

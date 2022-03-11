@@ -2,7 +2,7 @@ import { FaasReactClient } from '@faasjs/react'
 import { notification } from 'antd'
 
 const client = FaasReactClient({
-  domain: process.env.REACT_APP_API as string,
+  domain: process.env.VITE_REACT_APP_API,
   onError (action: string) {
     return async function (res: any) {
       console.error('e', res.body)
