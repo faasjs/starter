@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'www/**'
+      - 'packages/www/**'
   pull_request:
     paths:
-      - 'www/**'
+      - 'packages/www/**'
 
 jobs:
   test:
