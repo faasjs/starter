@@ -3,17 +3,13 @@ import { TodoList } from '../list'
 
 let mockedData: any[] = []
 
-jest.mock('@faasjs/react', function () {
+jest.mock('libs/faas', function () {
   return {
-    FaasReactClient: function () {
-      return {
-        useFaas: function () {
-          return { data: mockedData }
-        },
-        faas: async function () {
-          return Promise.resolve({ data: mockedData })
-        }
-      }
+    useFaas: function () {
+      return { data: mockedData }
+    },
+    faas: async function () {
+      return Promise.resolve({ data: mockedData })
     }
   }
 })

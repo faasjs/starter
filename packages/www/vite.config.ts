@@ -28,5 +28,4 @@ export default defineConfig({
       '@ant-design/icons',
     ]
   },
-  define: { 'process.env.VITE_REACT_APP_API': `"${env.VITE_REACT_APP_API}"` }
 })
