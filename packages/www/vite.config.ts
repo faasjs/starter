@@ -24,10 +24,8 @@ export default defineConfig({
     include: [
       'react',
       'react-dom',
-      'react-router-dom',
       'antd',
       '@ant-design/icons',
-      'react-router-dom'
     ]
   },
   define: { 'process.env.VITE_REACT_APP_API': `"${env.VITE_REACT_APP_API}"` }

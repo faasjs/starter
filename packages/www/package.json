@@ -8,25 +8,19 @@
     "@faasjs/react": "^0.0.2-beta.384",
     "antd": "*",
     "lodash": "*",
-    "react": "*",
-    "react-dom": "*",
-    "react-router-dom": "*",
-    "uuid": "*",
     "vite": "*",
     "@vitejs/plugin-react": "*"
   },
   "devDependencies": {
     "vite-tsconfig-paths": "*",
-    "@swc/jest": "*",
+    "@faasjs/jest": "*",
     "@testing-library/jest-dom": "*",
     "@testing-library/react": "*",
     "@types/jest": "*",
     "@types/lodash": "*",
     "@types/node": "*",
     "@types/react": "*",
-    "@types/react-dom": "*",
-    "@types/uuid": "*",
-    "jest": "*"
+    "@types/react-dom": "*"
   },
   "scripts": {
     "dev": "vite",
@@ -41,7 +35,7 @@
   "jest": {
     "rootDir": ".",
     "transform": {
-      ".(jsx|tsx?)": "@swc/jest"
+      ".(jsx|tsx?)": "@faasjs/jest"
     },
     "testEnvironment": "jsdom",
     "collectCoverageFrom": [
