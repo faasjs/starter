@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@faasjs/eslint-config-recommended": "^0.0.2-beta.404",
-    "@faasjs/knex": "^0.0.2-beta.404",
+    "@faasjs/knex": "^0.0.2-beta.405",
     "faasjs": "^0.0.2-beta.404",
     "@faasjs/tencentcloud": "^0.0.2-beta.404",
     "pg": "*",
