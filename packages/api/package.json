@@ -11,7 +11,7 @@
     "@faasjs/eslint-config-recommended": "^0.0.2-beta.430",
     "@faasjs/knex": "^0.0.2-beta.431",
     "faasjs": "^0.0.2-beta.431",
-    "@faasjs/tencentcloud": "^0.0.2-beta.428",
+    "@faasjs/tencentcloud": "^0.0.2-beta.431",
     "pg": "*",
     "uuid": "*"
   },
