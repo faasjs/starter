@@ -17,5 +17,16 @@
 		"zfben.faasjs-snippets",
 		"mtxr.sqltools",
 		"mtxr.sqltools-driver-pg"
-	]
+	],
+	"hostRequirements": {
+    "cpus": 2
+  },
+  "waitFor": "onCreateCommand",
+  "updateContentCommand": "npm install",
+  "portsAttributes": {
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "openPreview"
+    }
+  }
 }
