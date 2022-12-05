@@ -1,7 +1,4 @@
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { Todo } from 'todo'
 
-render(
-  <Todo />,
-  document.getElementById('root')
-)
+createRoot(document.getElementById('root')).render(<Todo />)
