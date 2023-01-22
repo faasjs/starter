@@ -61,5 +61,9 @@
       "name": "testing",
       "connectString": "postgresql://testing@pg_testing1/testing"
     },
+  ],
+  "cSpell.words": [
+    "antd",
+    "faas"
   ]
 }

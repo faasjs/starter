@@ -18,7 +18,7 @@ describe('TodoList', function () {
   test('empty', function () {
     render(<TodoList />)
 
-    expect(screen.getByText('No Data')).toBeInTheDocument()
+    expect(screen.getByText('No data')).toBeInTheDocument()
   })
 
   test('with data', function () {
