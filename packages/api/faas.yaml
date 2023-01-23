@@ -13,7 +13,11 @@ defaults:
       type: cloud_function
     http:
       provider: tencentcloud
-      type: http
+      config:
+        cookie:
+          secure: false
+          session:
+            secret: secret
     knex:
       config:
         client: pg

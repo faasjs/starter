@@ -8,6 +8,9 @@ import { useKnex } from '@faasjs/knex'
 if (!process.env.SECRET_KNEX_CONNECTION)
   process.env.SECRET_KNEX_CONNECTION = `postgresql://testing@pg_testing${process.env.JEST_WORKER_ID}/testing`
 
+if (!process.env.SECRET_HTTP_COOKIE_SESSION_SECRET)
+  process.env.SECRET_HTTP_COOKIE_SESSION_SECRET = 'secret'
+
 const config = loadConfig(process.cwd(), '')['testing']
 let schema
 let tables
