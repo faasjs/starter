@@ -10,7 +10,7 @@
   "dependencies": {
     "@faasjs/eslint-config-recommended": "^0.0.3-beta.31",
     "@faasjs/knex": "^0.0.3-beta.32",
-    "faasjs": "^0.0.3-beta.31",
+    "faasjs": "^0.0.3-beta.32",
     "@faasjs/tencentcloud": "^0.0.3-beta.31",
     "pg": "*",
     "uuid": "*"
