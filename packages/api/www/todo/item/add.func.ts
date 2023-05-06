@@ -14,6 +14,6 @@ export default useFunc(function () {
       status: '未完成'
     }).returning('id')
 
-    return { id: ids[0] }
+    return { id: ids[0].id }
   }
 })
