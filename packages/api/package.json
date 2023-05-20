@@ -8,7 +8,7 @@
     "ci": "jest --forceExit --coverage --ci"
   },
   "dependencies": {
-    "@faasjs/eslint-config-recommended": "^0.0.3-beta.80",
+    "@faasjs/eslint-config-recommended": "^0.0.3-beta.82",
     "@faasjs/knex": "^0.0.3-beta.81",
     "faasjs": "^0.0.3-beta.80",
     "@faasjs/tencentcloud": "^0.0.3-beta.79",
