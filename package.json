@@ -5,7 +5,7 @@
     "dev": "concurrently \"npm:dev:*\"",
     "dev:api": "npm run dev --workspace=packages/api",
     "dev:www": "npm run dev --workspace=packages/www",
-    "test": "npm run test --workspaces",
+    "test": "npm run test --workspaces --if-present",
     "test:api": "npm run test --workspace=packages/api",
     "test:www": "npm run test --workspace=packages/www",
     "ci": "npm run ci --workspaces",

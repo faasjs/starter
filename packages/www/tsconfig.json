@@ -13,6 +13,12 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "jsx": "react-jsx",
-    "baseUrl": "src"
-  }
+    "baseUrl": "src",
+    "paths": {
+      "@faasjs-starter/types": ["../../types"]
+    }
+  },
+  "references": [{
+    "path": "../types"
+  }]
 }

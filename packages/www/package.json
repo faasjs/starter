@@ -9,7 +9,8 @@
     "antd": "*",
     "lodash": "*",
     "vite": "*",
-    "@vitejs/plugin-react": "*"
+    "@vitejs/plugin-react": "*",
+    "@faasjs-starter/types": "file:../types"
   },
   "devDependencies": {
     "vite-tsconfig-paths": "*",

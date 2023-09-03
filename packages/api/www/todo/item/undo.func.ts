@@ -9,6 +9,6 @@ export default useFunc(function () {
   useKnex()
 
   return async function () {
-    await query('todo_items').update({ status: '未完成' }).where({ id: http.params.id })
+    await query('todo_items').update({ status: 'pending' }).where({ id: http.params.id })
   }
 })

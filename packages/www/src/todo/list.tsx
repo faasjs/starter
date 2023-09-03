@@ -1,15 +1,12 @@
 import {
-  Button, Input, List, Modal, Skeleton, Typography
+  Button, Input, List, Modal, Skeleton, Typography, message
 } from 'antd'
 import { CheckOutlined, UndoOutlined } from '@ant-design/icons'
 import { faas, useFaas } from 'libs/faas'
+import type { TodoItem } from '@faasjs-starter/types'
 
 export function TodoList () {
-  const list = useFaas<{
-    id: string
-    title: string
-    status: string
-  }[]>('todo/item/list', {})
+  const list = useFaas<TodoItem[]>('todo/item/list', {})
 
   if (!list.data) return <Skeleton active />
 
@@ -17,33 +14,41 @@ export function TodoList () {
     maxWidth: '500px',
     margin: '24px auto'
   } }>
-    <Typography.Title>待办事项</Typography.Title>
+    <Typography.Title>FaasJS Todo Demo</Typography.Title>
     <Button
       type='primary'
       onClick={ () => {
         let title: string
         const modal = Modal.confirm({
-          title: '添加',
+          title: 'Add a new item',
           content: <Input
-            placeholder='输入事项内容'
-            onChange={ e => title = e.target.value }
+            placeholder='Title'
+            onChange={ e => title = e.target.value?.trim() }
           />,
-          okText: '提交',
+          okText: 'Add',
           async onOk () {
+            if (!title) {
+              message.error('Title is required')
+              return
+            }
             modal.destroy()
             await faas('todo/item/add', { title })
             await list.reload()
           },
-          cancelText: '取消'
+          cancelText: 'Cancel',
         })
-      } }>添加</Button>
-    <List
+      } }>New</Button>
+    <List<TodoItem>
       dataSource={ list.data }
+      rowKey={ item => item.id }
       renderItem={ item => (
         <List.Item actions={ [
-          item.status === '未完成' ? <CheckOutlined
+          item.status === 'pending' ? <CheckOutlined
             key='done'
-            style={ { cursor: 'pointer' } }
+            style={ {
+              cursor: 'pointer',
+              color: 'var(--ant-success-color)',
+            } }
             onClick={ async () => faas('todo/item/done', { id: item.id }).finally(async () => list.reload()) }
           /> : <UndoOutlined
             key='undo'
@@ -51,7 +56,10 @@ export function TodoList () {
             onClick={ async () => faas('todo/item/undo', { id: item.id }).finally(async () => list.reload()) }
           />
         ] }>
-          <Typography.Text>{item.title}</Typography.Text>
+          <Typography.Text
+            delete={ item.status === 'done' }
+            type={ item.status === 'done' ? 'secondary' : undefined }
+          >{item.title}</Typography.Text>
         </List.Item>
       ) }
     />

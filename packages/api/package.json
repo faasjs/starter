@@ -13,7 +13,8 @@
     "faasjs": "^0.0.3-beta.100",
     "@faasjs/tencentcloud": "^0.0.3-beta.100",
     "pg": "*",
-    "uuid": "*"
+    "uuid": "*",
+    "@faasjs-starter/types": "file:../types"
   },
   "eslintConfig": {
     "extends": [

@@ -11,7 +11,7 @@ export default useFunc(function () {
   return async function () {
     const ids = await query('todo_items').insert({
       title: http.params.title,
-      status: '未完成'
+      status: 'pending',
     }).returning('id')
 
     return { id: ids[0].id }

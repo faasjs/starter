@@ -7,6 +7,6 @@ export default useFunc(function () {
   useKnex()
 
   return async function () {
-    return query('todo_items').orderByRaw('array_position(ARRAY[\'未完成\', \'已完成\']::varchar[], status), "createdAt" desc')
+    return query('todo_items').orderByRaw('array_position(ARRAY[\'pending\', \'done\']::varchar[], status), "createdAt" desc')
   }
 })
