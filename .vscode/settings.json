@@ -32,7 +32,6 @@
     "**/.ssh": true,
     "**/.gitconfig": true
   },
-  "eslint.packageManager": "npm",
   "eslint.validate": [
     "javascript",
     "javascriptreact",

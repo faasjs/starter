@@ -7,22 +7,40 @@
 		3000,
 		3001
 	],
-	"settings": {
-		"terminal.integrated.defaultProfile.linux": "zsh"
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "zsh"
+			},
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"github.copilot",
+				"eamodio.gitlens",
+				"zfben.faasjs-snippets",
+				"mtxr.sqltools",
+				"mtxr.sqltools-driver-pg",
+				"streetsidesoftware.code-spell-checker"
+			]
+		},
+		"codespaces": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "zsh"
+			},
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"github.copilot",
+				"eamodio.gitlens",
+				"zfben.faasjs-snippets",
+				"mtxr.sqltools",
+				"mtxr.sqltools-driver-pg",
+				"streetsidesoftware.code-spell-checker"
+			]
+		}
 	},
-	"extensions": [
-		"dbaeumer.vscode-eslint",
-		"github.copilot",
-		"eamodio.gitlens",
-		"zfben.faasjs-snippets",
-		"mtxr.sqltools",
-		"mtxr.sqltools-driver-pg"
-	],
 	"hostRequirements": {
     "cpus": 2
   },
   "waitFor": "onCreateCommand",
-  "updateContentCommand": "npm install",
   "portsAttributes": {
     "3000": {
       "label": "Application",
