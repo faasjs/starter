@@ -5,7 +5,7 @@
   "dependencies": {
     "@ant-design/icons": "*",
     "@faasjs/eslint-config-react": "^0.0.3-beta.107",
-    "@faasjs/react": "^0.0.3-beta.107",
+    "@faasjs/react": "^0.0.3-beta.108",
     "antd": "*",
     "lodash": "*",
     "vite": "*",
