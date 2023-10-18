@@ -38,7 +38,7 @@
       "^libs(.*)$": "<rootDir>/libs$1"
     },
     "setupFilesAfterEnv": [
-      "@faasjs/test/dist/jest.setup.js",
+      "@faasjs/jest/jest.setup.js",
       "./libs/jest.setup.ts"
     ]
   }
