@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const join = require('path').join
 
 const tsconfig = require(join(process.env.FaasRoot, 'tsconfig.json'))
