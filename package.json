@@ -5,19 +5,18 @@
     "dev": "concurrently \"npm:dev:*\"",
     "dev:api": "npm run dev --workspace=packages/api",
     "dev:www": "npm run dev --workspace=packages/www",
-    "test": "npm run test --workspaces --if-present",
-    "test:api": "npm run test --workspace=packages/api",
-    "test:www": "npm run test --workspace=packages/www",
-    "ci": "npm run ci --workspaces",
-    "ci:api": "npm run ci --workspace=packages/api",
-    "ci:www": "npm run ci --workspace=packages/www"
+    "test": "jest",
+    "ci": "jest --coverage --ci --silent"
   },
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
     "concurrently": "*",
-    "@biomejs/biome": "*"
+    "@biomejs/biome": "*",
+    "@faasjs/jest": "*",
+    "@testing-library/jest-dom": "*",
+    "@testing-library/react": "*"
   },
   "engines": {
     "node": ">=20.0.0",

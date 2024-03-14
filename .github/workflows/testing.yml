@@ -25,15 +25,15 @@ jobs:
         options: --health-cmd pg_isready
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4.0.2
+      - uses: actions/setup-node@v4
         with:
-          cache: 'npm'
+          version: 20
+          cache: npm
       - name: Install
         run: |
-          npm install -g npm@latest
-          npm install
+          npm ci
       - name: Test
         run: |-
-          npm run ci:api
+          npm run ci
         env:
           SECRET_KNEX_CONNECTION: postgres://postgres:postgres@localhost:5432/testing

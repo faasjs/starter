@@ -11,9 +11,10 @@ if (!process.env.SECRET_KNEX_CONNECTION)
 if (!process.env.SECRET_HTTP_COOKIE_SESSION_SECRET)
   process.env.SECRET_HTTP_COOKIE_SESSION_SECRET = 'secret'
 
-const config = loadConfig(process.cwd(), '')['testing']
-let schema
-let tables
+const config = loadConfig(__dirname + '/..', '')['testing']
+
+let schema: string
+let tables: string[]
 
 function log (message:string) {
   process.stdout.write(message + '\n')
@@ -49,7 +50,11 @@ global.beforeEach(async function () {
 
     await db.raw(tables.map(t => `TRUNCATE ${t} RESTART IDENTITY`).join(';'))
     await db.destroy()
-  } catch (error) {
+  } catch (error: any) {
     log(error?.message)
   }
+})
+
+global.afterAll(async () => {
+  await useKnex().quit()
 })

@@ -13,40 +13,12 @@
   },
   "devDependencies": {
     "vite-tsconfig-paths": "*",
-    "@faasjs/jest": "*",
-    "@testing-library/jest-dom": "*",
-    "@testing-library/react": "*",
-    "@types/jest": "*",
     "@types/lodash": "*",
     "@types/node": "*",
     "@types/react": "*",
     "@types/react-dom": "*"
   },
   "scripts": {
-    "dev": "vite",
-    "test": "jest",
-    "ci": "jest --coverage --ci"
-  },
-  "eslintConfig": {
-    "extends": [
-      "@faasjs/react"
-    ]
-  },
-  "jest": {
-    "rootDir": ".",
-    "transform": {
-      ".(jsx|tsx?)": "@faasjs/jest"
-    },
-    "testEnvironment": "jsdom",
-    "collectCoverageFrom": [
-      "**/*.tsx"
-    ],
-    "testRegex": "/*\\.test\\.tsx?$",
-    "moduleNameMapper": {
-      "^libs(.*)$": "<rootDir>/src/libs$1"
-    },
-    "setupFilesAfterEnv": [
-      "./src/jest.setup.ts"
-    ]
+    "dev": "vite"
   }
 }

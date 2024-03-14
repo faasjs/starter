@@ -14,26 +14,5 @@
     "pg": "*",
     "uuid": "*",
     "@faasjs-starter/types": "file:../types"
-  },
-  "jest": {
-    "verbose": false,
-    "transform": {
-      ".(jsx|tsx?)": "@swc/jest"
-    },
-    "testEnvironment": "node",
-    "collectCoverageFrom": [
-      "**/*.ts"
-    ],
-    "testRegex": "/*\\.test\\.ts$",
-    "modulePathIgnorePatterns": [
-      "/tmp/"
-    ],
-    "moduleNameMapper": {
-      "^libs(.*)$": "<rootDir>/libs$1"
-    },
-    "setupFilesAfterEnv": [
-      "@faasjs/jest/jest.setup.js",
-      "./libs/jest.setup.ts"
-    ]
   }
 }
