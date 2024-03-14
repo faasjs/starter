@@ -3,7 +3,7 @@
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": "explicit"
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -65,5 +65,6 @@
     "antd",
     "faas",
     "faasjs"
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

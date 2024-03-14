@@ -7,19 +7,30 @@
 		3000,
 		3001
 	],
+	"portsAttributes": {
+    "3000": {
+      "label": "www",
+      "onAutoForward": "openPreview"
+    },
+		"3001": {
+      "label": "api"
+    }
+  },
+	"otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  },
 	"customizations": {
 		"vscode": {
 			"settings": {
 				"terminal.integrated.defaultProfile.linux": "zsh"
 			},
 			"extensions": [
-				"dbaeumer.vscode-eslint",
-				"github.copilot",
 				"eamodio.gitlens",
 				"zfben.faasjs-snippets",
 				"mtxr.sqltools",
 				"mtxr.sqltools-driver-pg",
-				"streetsidesoftware.code-spell-checker"
+				"streetsidesoftware.code-spell-checker",
+				"biomejs.biome"
 			]
 		},
 		"codespaces": {
@@ -27,24 +38,14 @@
 				"terminal.integrated.defaultProfile.linux": "zsh"
 			},
 			"extensions": [
-				"dbaeumer.vscode-eslint",
-				"github.copilot",
 				"eamodio.gitlens",
 				"zfben.faasjs-snippets",
 				"mtxr.sqltools",
 				"mtxr.sqltools-driver-pg",
-				"streetsidesoftware.code-spell-checker"
+				"streetsidesoftware.code-spell-checker",
+				"biomejs.biome"
 			]
 		}
 	},
-	"hostRequirements": {
-    "cpus": 2
-  },
-  "waitFor": "onCreateCommand",
-  "portsAttributes": {
-    "3000": {
-      "label": "Application",
-      "onAutoForward": "openPreview"
-    }
-  }
+  "waitFor": "onCreateCommand"
 }

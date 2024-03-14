@@ -1,5 +1,5 @@
 {
-  "name": "@faasjs-starter/starter",
+  "name": "@faasjs-starter/types",
   "private": "true",
   "version": "0.0.0",
   "type": "module",
