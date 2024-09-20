@@ -2,11 +2,13 @@ import {
   Button, Input, List, Modal, Skeleton, Typography, message
 } from 'antd'
 import { CheckOutlined, UndoOutlined } from '@ant-design/icons'
-import { faas, useFaas } from 'libs/faas'
+import { faas, useFaas } from '@faasjs/react'
 import type { TodoItem } from '@faasjs-starter/types'
 
 export function TodoList () {
   const list = useFaas<TodoItem[]>('todo/item/list', {})
+
+  console.log('list', list)
 
   if (!list.data) return <Skeleton active />
 

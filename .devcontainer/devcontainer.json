@@ -19,6 +19,11 @@
 	"otherPortsAttributes": {
     "onAutoForward": "ignore"
   },
+	"remoteUser": "root",
+	"mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+    "source=node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
 	"customizations": {
 		"vscode": {
 			"settings": {
@@ -30,7 +35,8 @@
 				"mtxr.sqltools",
 				"mtxr.sqltools-driver-pg",
 				"streetsidesoftware.code-spell-checker",
-				"biomejs.biome"
+				"biomejs.biome",
+				"oven.bun-vscode"
 			]
 		},
 		"codespaces": {
@@ -43,7 +49,8 @@
 				"mtxr.sqltools",
 				"mtxr.sqltools-driver-pg",
 				"streetsidesoftware.code-spell-checker",
-				"biomejs.biome"
+				"biomejs.biome",
+				"oven.bun-vscode"
 			]
 		}
 	},

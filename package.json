@@ -12,14 +12,18 @@
     "packages/*"
   ],
   "devDependencies": {
-    "concurrently": "*",
-    "@biomejs/biome": "*",
-    "@faasjs/jest": "*",
-    "@testing-library/jest-dom": "*",
-    "@testing-library/react": "*"
+    "concurrently": "^9.0.1",
+    "@biomejs/biome": "^1.9.2",
+    "@faasjs/jest": "^3.1.5",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1"
   },
   "engines": {
-    "node": ">=20.0.0",
+    "node": ">=22.0.0",
     "npm": ">=10.0.0"
+  },
+  "dependencies": {
+    "@faasjs/browser": "^3.1.5",
+    "@faasjs/react": "^3.1.5"
   }
 }

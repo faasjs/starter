@@ -2,16 +2,16 @@ version: '3'
 
 services:
   app:
-    image: faasjs/vscode:debian
-    platform: linux/x86_64
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     command: sleep infinity
     tty: true
     environment:
       SECRET_KNEX_CONNECTION: postgresql://development@pg/development
     volumes:
       - ..:/root/app:delegated
-      - /root/app/node_modules
-      - ~/.ssh:/root/.ssh:delegated
+      - ~/.zsh_history:/root/.zsh_history:delegated
     ports:
       - 3000:3000
       - 3001:3001
@@ -20,7 +20,6 @@ services:
       - pg_testing1
   pg:
     image: postgres:alpine
-    platform: linux/x86_64
     environment:
       POSTGRES_USER: development
       POSTGRES_DB: development
@@ -29,7 +28,6 @@ services:
       - ../packages/api/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
   pg_testing1:
     image: postgres:alpine
-    platform: linux/x86_64
     environment:
       POSTGRES_DB: testing
       POSTGRES_USER: testing

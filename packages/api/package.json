@@ -3,14 +3,13 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "dev": "faas server -p 3001",
+    "dev": "FaasLog=debug faas server -p 3001",
     "test": "jest --forceExit",
     "ci": "jest --forceExit --coverage --ci"
   },
   "dependencies": {
     "@faasjs/knex": "*",
     "faasjs": "*",
-    "@faasjs/tencentcloud": "*",
     "pg": "*",
     "uuid": "*",
     "@faasjs-starter/types": "file:../types"
