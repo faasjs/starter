@@ -5,9 +5,6 @@ module.exports = {
     '.(jsx|tsx?)': '@faasjs/jest'
   },
   testEnvironment: 'jsdom',
-  moduleNameMapper: {
-    '^libs(.*)$': '<rootDir>/src/libs$1'
-  },
   setupFilesAfterEnv: [
     './src/jest.setup.ts'
   ]

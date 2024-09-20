@@ -11,7 +11,7 @@ if (!process.env.SECRET_KNEX_CONNECTION)
 if (!process.env.SECRET_HTTP_COOKIE_SESSION_SECRET)
   process.env.SECRET_HTTP_COOKIE_SESSION_SECRET = 'secret'
 
-const config = loadConfig(__dirname + '/..', '')['testing']
+const config = loadConfig(__dirname + '/..', '', 'testing')
 
 let schema: string
 let tables: string[]
@@ -33,9 +33,11 @@ global.beforeEach(async function () {
     await db.raw(schema)
     await db.destroy()
 
-    await useCloudFunction({ config })
-    await useHttp().mount({ config })
-    await useKnex().mount({ config })
+    await useCloudFunction()
+    await useHttp().mount()
+    await useKnex({
+      config: config.plugins.knex.config
+    }).mount()
   }
 
   try {

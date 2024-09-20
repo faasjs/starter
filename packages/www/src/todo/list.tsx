@@ -6,7 +6,7 @@ import { faas, useFaas } from '@faasjs/react'
 import type { TodoItem } from '@faasjs-starter/types'
 
 export function TodoList () {
-  const list = useFaas<TodoItem[]>('todo/item/list', {})
+  const list = useFaas<TodoItem[]>('todo/item/list', undefined)
 
   console.log('list', list)
 

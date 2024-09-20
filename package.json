@@ -21,9 +21,5 @@
   "engines": {
     "node": ">=22.0.0",
     "npm": ">=10.0.0"
-  },
-  "dependencies": {
-    "@faasjs/browser": "^3.1.5",
-    "@faasjs/react": "^3.1.5"
   }
 }

@@ -10,6 +10,7 @@
   "dependencies": {
     "@faasjs/knex": "*",
     "faasjs": "*",
+    "@faasjs/cloud_function": "*",
     "pg": "*",
     "uuid": "*",
     "@faasjs-starter/types": "file:../types"

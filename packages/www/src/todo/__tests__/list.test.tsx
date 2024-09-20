@@ -1,31 +1,25 @@
 import { render, screen } from '@testing-library/react'
 import { TodoList } from '../list'
+import { setMock, Response } from '@faasjs/browser'
 
 let mockedData: any[] = []
 
-jest.mock('libs/faas', function () {
-  return {
-    useFaas: function () {
-      return { data: mockedData }
-    },
-    faas: async function () {
-      return Promise.resolve({ data: mockedData })
-    }
-  }
-})
-
 describe('TodoList', function () {
-  test('empty', function () {
-    render(<TodoList />)
-
-    expect(screen.getByText('No data')).toBeInTheDocument()
+  beforeAll(() => {
+    setMock(async () => new Response({data: mockedData}))
   })
 
-  test('with data', function () {
+  test('empty', async function () {
+    render(<TodoList />)
+
+    expect(await screen.findByText('No data')).toBeInTheDocument()
+  })
+
+  test('with data', async function () {
     mockedData = [{ title: 'test' }]
 
     render(<TodoList />)
 
-    expect(screen.getByText('test')).toBeInTheDocument()
+    expect(await screen.findByText('test')).toBeInTheDocument()
   })
 })

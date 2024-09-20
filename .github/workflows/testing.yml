@@ -25,15 +25,12 @@ jobs:
         options: --health-cmd pg_isready
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          version: 20
-          cache: npm
+          bun-version: latest
       - name: Install
-        run: |
-          npm ci
+        run: bun install
       - name: Test
-        run: |-
-          npm run ci
+        run: bun run ci
         env:
           SECRET_KNEX_CONNECTION: postgres://postgres:postgres@localhost:5432/testing
