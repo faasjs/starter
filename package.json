@@ -1,25 +1,36 @@
 {
-  "name": "@faasjs-starter/mono",
+  "name": "@faasjs-starter/api",
   "private": true,
+  "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm:dev:*\"",
-    "dev:api": "npm run dev --workspace=packages/api",
-    "dev:www": "npm run dev --workspace=packages/www",
-    "test": "jest",
-    "ci": "jest --coverage --ci --silent"
+    "dev": "FaasLog=debug faas server -c",
+    "test": "jest --forceExit",
+    "ci": "jest --forceExit --coverage --ci"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "dependencies": {
+    "@faasjs/knex": "*",
+    "faasjs": "*",
+    "pg": "*",
+    "uuid": "*",
+    "@rsbuild/core": "*",
+    "@rsbuild/plugin-react": "*",
+    "@faasjs/ant-design": "*"
+  },
   "devDependencies": {
-    "concurrently": "^9.0.1",
-    "@biomejs/biome": "^1.9.2",
-    "@faasjs/jest": "^3.1.5",
-    "@testing-library/jest-dom": "^6.5.0",
-    "@testing-library/react": "^16.0.1"
+    "@types/react": "*",
+    "@faasjs/lint": "*",
+    "@faasjs/jest": "*",
+    "@testing-library/jest-dom": "*",
+    "@testing-library/react": "*"
   },
-  "engines": {
-    "node": ">=22.0.0",
-    "npm": ">=10.0.0"
+  "jest": {
+    "transform": {
+      ".(jsx|tsx?)": "@faasjs/jest"
+    },
+    "moduleNameMapper": {
+      "^lodash-es$": "lodash"
+    },
+    "setupFilesAfterEnv": ["@faasjs/jest/jest.setup.js", "./libs/jest.setup.ts"]
   }
 }

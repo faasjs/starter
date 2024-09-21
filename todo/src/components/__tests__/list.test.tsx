@@ -1,25 +1,28 @@
+/**
+ * @jest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react'
-import { TodoList } from '../list'
+import { TodoList } from '../TodoList'
 import { setMock, Response } from '@faasjs/browser'
 
 let mockedData: any[] = []
 
-describe('TodoList', function () {
+describe('TodoList', () => {
   beforeAll(() => {
     setMock(async () => new Response({data: mockedData}))
   })
 
-  test('empty', async function () {
+  test('empty', async () => {
     render(<TodoList />)
 
-    expect(await screen.findByText('No data')).toBeInTheDocument()
+    expect(await screen.findByText('No data')).toBeDefined()
   })
 
-  test('with data', async function () {
+  test('with data', async () => {
     mockedData = [{ title: 'test' }]
 
     render(<TodoList />)
 
-    expect(await screen.findByText('test')).toBeInTheDocument()
+    expect(await screen.findByText('test')).toBeDefined()
   })
 })

@@ -1,17 +1,11 @@
 import {
-  Button, Input, List, Modal, Skeleton, Typography, message
+  Button, Input, List, Modal, Typography, message
 } from 'antd'
 import { CheckOutlined, UndoOutlined } from '@ant-design/icons'
-import { faas, useFaas } from '@faasjs/react'
+import { faas, withFaasData } from '@faasjs/ant-design'
 import type { TodoItem } from '@faasjs-starter/types'
 
-export function TodoList () {
-  const list = useFaas<TodoItem[]>('todo/item/list', undefined)
-
-  console.log('list', list)
-
-  if (!list.data) return <Skeleton active />
-
+export const TodoList = withFaasData(props => {
   return <div style={ {
     maxWidth: '500px',
     margin: '24px auto'
@@ -34,14 +28,14 @@ export function TodoList () {
               return
             }
             modal.destroy()
-            await faas('todo/item/add', { title })
-            await list.reload()
+            await faas('todo/actions/add', { title })
+            await props.reload()
           },
           cancelText: 'Cancel',
         })
       } }>New</Button>
     <List<TodoItem>
-      dataSource={ list.data }
+      dataSource={ props.data }
       rowKey={ item => item.id }
       renderItem={ item => (
         <List.Item actions={ [
@@ -51,11 +45,11 @@ export function TodoList () {
               cursor: 'pointer',
               color: 'var(--ant-success-color)',
             } }
-            onClick={ async () => faas('todo/item/done', { id: item.id }).finally(async () => list.reload()) }
+            onClick={ async () => faas('todo/actions/done', { id: item.id }).finally(async () => props.reload()) }
           /> : <UndoOutlined
             key='undo'
             style={ { cursor: 'pointer' } }
-            onClick={ async () => faas('todo/item/undo', { id: item.id }).finally(async () => list.reload()) }
+            onClick={ async () => faas('todo/actions/undo', { id: item.id }).finally(async () => props.reload()) }
           />
         ] }>
           <Typography.Text
@@ -66,4 +60,6 @@ export function TodoList () {
       ) }
     />
   </div>
-}
+}, {
+  action: 'todo/actions/list'
+})
