@@ -1,7 +1,6 @@
 # FaasJS Starter
 
-[![Api-Unit](https://github.com/faasjs/starter/actions/workflows/api-unit.yml/badge.svg)](https://github.com/faasjs/starter/actions/workflows/api-unit.yml)
-[![Www-Unit](https://github.com/faasjs/starter/actions/workflows/www-unit.yml/badge.svg)](https://github.com/faasjs/starter/actions/workflows/www-unit.yml)
+[![Testing](https://github.com/faasjs/starter/actions/workflows/testing.yml/badge.svg)](https://github.com/faasjs/starter/actions/workflows/testing.yml)
 
 A starter template for [FaasJS](https://faasjs.com).
 
