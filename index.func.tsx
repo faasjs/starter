@@ -8,13 +8,26 @@ function App() {
       <head>
         <title>Hi, 🚀 FaasJS is here!</title>
       </head>
-      <body style={{
-        padding: '20px',
-        textAlign: 'center',
-      }}>
+      <body
+        style={{
+          padding: '20px',
+          textAlign: 'center',
+          maxWidth: '600px',
+          margin: '0 auto',
+        }}
+      >
         <h1>Hi, 🚀 FaasJS is here!</h1>
-        <p>You can edit current page in <code style={{fontWeight: 'bold'}}>index.func.tsx</code>.</p>
-        <p>Or you can try the <a href="/todo">Todo demo</a> based on Vite.</p>
+        <p>
+          You can edit current page in{' '}
+          <code style={{ fontWeight: 'bold' }}>index.func.tsx</code>.
+        </p>
+        <p>Or you can explore examples:</p>
+        <p>
+          <a href='/examples/todo'>Todo demo</a> based on RsBuild.
+        </p>
+        <p>
+          <a href='/examples/download'>File download demo</a>.
+        </p>
       </body>
     </html>
   )

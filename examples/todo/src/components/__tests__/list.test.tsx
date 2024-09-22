@@ -9,7 +9,7 @@ let mockedData: any[] = []
 
 describe('TodoList', () => {
   beforeAll(() => {
-    setMock(async () => new Response({data: mockedData}))
+    setMock(async () => new Response({ data: mockedData }))
   })
 
   test('empty', async () => {

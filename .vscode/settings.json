@@ -3,11 +3,13 @@
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
+    "source.fixAll": "explicit",
+    "quickfix.biome": "explicit"
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "editor.wordWrap": "on",
+  "editor.formatOnSave": true,
   "files.trimTrailingWhitespace": true,
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "editor.minimap.renderCharacters": false,

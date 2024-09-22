@@ -1,5 +1,5 @@
-import { defineConfig } from "@rsbuild/core";
-import { pluginReact } from "@rsbuild/plugin-react";
+import { defineConfig } from '@rsbuild/core'
+import { pluginReact } from '@rsbuild/plugin-react'
 
 export default defineConfig({
   plugins: [pluginReact()],
@@ -11,36 +11,36 @@ export default defineConfig({
   environments: {
     web: {
       output: {
-        target: "web",
+        target: 'web',
       },
       source: {
         entry: {
-          index: "./entry-client",
+          index: './entry-client',
         },
       },
     },
     ssr: {
       output: {
-        target: "node",
+        target: 'node',
         distPath: {
-          root: "dist/server",
+          root: 'dist/server',
         },
       },
       source: {
         entry: {
-          index: "./entry-server",
+          index: './entry-server',
         },
       },
     },
   },
   html: {
-    template: "./index.html",
+    template: './index.html',
   },
   tools: {
     rspack: {
       output: {
-        publicPath: "/todo/",
-      }
-    }
-  }
-});
+        publicPath: '/examples/todo/',
+      },
+    },
+  },
+})

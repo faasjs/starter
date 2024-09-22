@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "FaasLog=debug faas server -c",
+    "dev": "FaasLog=debug faas server",
     "test": "jest --forceExit",
     "ci": "jest --forceExit --coverage --ci"
   },
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@types/react": "*",
+    "@types/react-dom": "*",
     "@faasjs/lint": "*",
     "@faasjs/jest": "*",
     "@testing-library/jest-dom": "*",
