@@ -3,11 +3,7 @@ name: Api Unit
 on:
   workflow_dispatch:
   push:
-    paths:
-      - 'packages/api/**'
   pull_request:
-    paths:
-      - 'packages/api/**'
 
 jobs:
   test:
