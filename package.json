@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "FaasLog=debug faas server",
+    "dev": "FaasLog=debug faas server -c",
     "test": "jest --forceExit",
     "ci": "jest --forceExit --coverage --ci"
   },
@@ -15,7 +15,8 @@
     "uuid": "*",
     "@rsbuild/core": "*",
     "@rsbuild/plugin-react": "*",
-    "@faasjs/ant-design": "*"
+    "@faasjs/ant-design": "*",
+    "zod": "*"
   },
   "devDependencies": {
     "@types/react": "*",

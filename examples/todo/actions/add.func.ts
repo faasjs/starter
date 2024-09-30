@@ -1,19 +1,41 @@
 import { useFunc } from '@faasjs/func'
 import { useHttp } from '@faasjs/http'
 import { useKnex, query } from '@faasjs/knex'
+import type { InferFaasAction } from '@faasjs/types'
+import { z } from 'zod'
 
-export default useFunc(() => {
-  const http = useHttp<{
-    title: string
-  }>({ validator: { params: { rules: { title: { required: true } } } } })
+const schema = z
+  .object({
+    title: z.string(),
+  })
+  .required()
+
+const func = useFunc<
+  { params: z.infer<typeof schema> },
+  unknown,
+  { id: string }
+>(() => {
+  useHttp()
   useKnex()
 
-  return async () => {
-    const ids = await query('todo_items').insert({
-      title: http.params.title,
-      status: 'pending',
-    }).returning('id')
+  return async ({ event }) => {
+    schema.parse(event.params)
+
+    const ids = await query('todo_items')
+      .insert({
+        title: event.params.title,
+        status: 'pending',
+      })
+      .returning('id')
 
     return { id: ids[0].id }
   }
 })
+
+export default func
+
+declare module '@faasjs/types' {
+  interface FaasActions {
+    'examples/todo/actions/add': InferFaasAction<typeof func>
+  }
+}

@@ -1,4 +1,9 @@
-import { TodoItem } from '@faasjs-starter/types'
+export type TodoItem = {
+  id: string
+  title: string
+  status: 'pending' | 'done'
+  createdAt: string
+}
 
 declare module 'knex/types/tables' {
   interface Tables {
