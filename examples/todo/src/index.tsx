@@ -1,5 +1,5 @@
 import { TodoList } from './components/TodoList'
-import { notification } from 'antd'
+import { notification, Typography } from 'antd'
 import { FaasReactClient } from '@faasjs/react'
 
 FaasReactClient({
@@ -31,5 +31,15 @@ FaasReactClient({
 })
 
 export default function App() {
-  return <TodoList />
+  return (
+    <div
+      style={{
+        maxWidth: '500px',
+        margin: '24px auto',
+      }}
+    >
+      <Typography.Title>FaasJS Todo Demo</Typography.Title>
+      <TodoList />
+    </div>
+  )
 }

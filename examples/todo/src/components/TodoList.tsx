@@ -11,13 +11,7 @@ export const TodoList = withFaasData<
 >(
   props => {
     return (
-      <div
-        style={{
-          maxWidth: '500px',
-          margin: '24px auto',
-        }}
-      >
-        <Typography.Title>FaasJS Todo Demo</Typography.Title>
+      <>
         <Button
           type='primary'
           onClick={() => {
@@ -87,7 +81,7 @@ export const TodoList = withFaasData<
             </List.Item>
           )}
         />
-      </div>
+      </>
     )
   },
   {

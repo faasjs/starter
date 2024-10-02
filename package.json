@@ -2,7 +2,6 @@
   "name": "@faasjs-starter/api",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
     "dev": "FaasLog=debug faas server -c",
     "test": "jest --forceExit",

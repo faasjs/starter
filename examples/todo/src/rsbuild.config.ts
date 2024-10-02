@@ -1,6 +1,8 @@
 import { defineConfig } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
 
+const publicPath = '/examples/todo/'
+
 export default defineConfig({
   plugins: [pluginReact()],
   root: __dirname,
@@ -25,6 +27,8 @@ export default defineConfig({
         distPath: {
           root: 'dist/server',
         },
+        assetPrefix: publicPath,
+        legalComments: 'none',
       },
       source: {
         entry: {
@@ -39,7 +43,7 @@ export default defineConfig({
   tools: {
     rspack: {
       output: {
-        publicPath: '/examples/todo/',
+        publicPath,
       },
     },
   },

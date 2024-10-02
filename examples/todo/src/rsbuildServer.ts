@@ -1,6 +1,7 @@
 import { createRsbuild, loadConfig } from '@rsbuild/core'
 import { resolve } from 'node:path'
 import type { IncomingMessage, ServerResponse } from 'node:http'
+import { existsSync, readFileSync } from 'node:fs'
 
 let rsbuildServer: Awaited<
   ReturnType<Awaited<ReturnType<typeof createRsbuild>>['createDevServer']>
@@ -19,6 +20,16 @@ async function init() {
 }
 
 export async function renderHtml() {
+  const prebuiltPath = resolve(__dirname, 'dist/server/index.js')
+
+  if (existsSync(prebuiltPath)) {
+    console.log('Using prebuilt file', prebuiltPath)
+    const template = readFileSync(resolve(__dirname, 'dist/index.html')).toString()
+    const { render } = await import(prebuiltPath)
+    console.log('makeup', render())
+    return template.replace('<!--app-content-->', render())
+  }
+
   if (!rsbuildServer) await init()
 
   const indexModule =
@@ -27,10 +38,22 @@ export async function renderHtml() {
   const template =
     await rsbuildServer.environments.web.getTransformedHtml('index')
 
-  return template.replace('<!--app-content-->', indexModule.render().html)
+  return template.replace('<!--app-content-->', indexModule.render())
 }
 
 export async function handle(req: IncomingMessage, res: ServerResponse) {
+  if (req.url.includes('/static/')) {
+    const prebuiltPath = resolve(
+      __dirname + req.url.replace('/examples/todo/static/', '/dist/static/')
+    )
+    console.log('prebuiltPath', __dirname, prebuiltPath)
+    if (existsSync(prebuiltPath)) {
+      console.log('Using prebuilt file', prebuiltPath)
+      res.end(readFileSync(prebuiltPath).toString())
+      return
+    }
+  }
+
   if (!rsbuildServer) await init()
 
   await new Promise(resolve => {
