@@ -25,7 +25,7 @@ services:
       POSTGRES_DB: development
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
-      - ../packages/api/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+      - ./schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
   pg_testing1:
     image: postgres:alpine
     environment:
@@ -33,4 +33,4 @@ services:
       POSTGRES_USER: testing
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
-      - ../packages/api/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+      - ./schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
