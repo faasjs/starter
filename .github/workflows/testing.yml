@@ -1,4 +1,4 @@
-name: Api Unit
+name: Testing
 
 on:
   workflow_dispatch:
