@@ -17,7 +17,7 @@ export default defineConfig({
       },
       source: {
         entry: {
-          index: './entry-client',
+          index: './src/entry-client',
         },
       },
     },
@@ -32,13 +32,13 @@ export default defineConfig({
       },
       source: {
         entry: {
-          index: './entry-server',
+          index: './src/entry-server',
         },
       },
     },
   },
   html: {
-    template: './index.html',
+    template: './src/index.html',
   },
   tools: {
     rspack: {

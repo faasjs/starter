@@ -23,7 +23,7 @@ function App() {
         </p>
         <p>Or you can explore examples:</p>
         <p>
-          <a href='/examples/todo'>Todo demo</a> based on RsBuild.
+          <a href='/examples/todo'>Todo demo</a> based on Ant Design and RsBuild.
         </p>
         <p>
           <a href='/examples/download'>File download demo</a>.

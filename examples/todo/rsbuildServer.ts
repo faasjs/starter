@@ -26,7 +26,6 @@ export async function renderHtml() {
     console.log('Using prebuilt file', prebuiltPath)
     const template = readFileSync(resolve(__dirname, 'dist/index.html')).toString()
     const { render } = await import(prebuiltPath)
-    console.log('makeup', render())
     return template.replace('<!--app-content-->', render())
   }
 
@@ -46,7 +45,6 @@ export async function handle(req: IncomingMessage, res: ServerResponse) {
     const prebuiltPath = resolve(
       __dirname + req.url.replace('/examples/todo/static/', '/dist/static/')
     )
-    console.log('prebuiltPath', __dirname, prebuiltPath)
     if (existsSync(prebuiltPath)) {
       console.log('Using prebuilt file', prebuiltPath)
       res.end(readFileSync(prebuiltPath).toString())

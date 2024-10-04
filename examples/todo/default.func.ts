@@ -1,5 +1,5 @@
 import { useFunc } from '@faasjs/func'
-import { handle } from './src/rsbuildServer'
+import { handle } from './rsbuildServer'
 
 export default useFunc(() => {
   return async ({ event }) => {
