@@ -22,8 +22,9 @@
     "@types/react-dom": "*",
     "@faasjs/lint": "*",
     "@faasjs/jest": "*",
-    "@testing-library/jest-dom": "*",
-    "@testing-library/react": "*"
+    "@faasjs/test": "*",
+    "@testing-library/react": "*",
+    "@happy-dom/jest-environment": "*"
   },
   "jest": {
     "transform": {
