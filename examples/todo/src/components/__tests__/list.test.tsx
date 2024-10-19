@@ -12,13 +12,13 @@ describe('TodoList', () => {
     setMock(async () => new Response({ data: mockedData }))
   })
 
-  test('empty', async () => {
+  it('empty', async () => {
     render(<TodoList />)
 
     expect(await screen.findByText('No data')).toBeDefined()
   })
 
-  test('with data', async () => {
+  it('with data', async () => {
     mockedData = [{ title: 'test' }]
 
     render(<TodoList />)
