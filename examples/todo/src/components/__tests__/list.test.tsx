@@ -3,26 +3,24 @@
  */
 import { render, screen } from '@testing-library/react'
 import { TodoList } from '../TodoList'
-import { setMock, Response } from '@faasjs/browser'
-
-let mockedData: any[] = []
+import { setMock } from '@faasjs/browser'
 
 describe('TodoList', () => {
-  beforeAll(() => {
-    setMock(async () => new Response({ data: mockedData }))
-  })
+
 
   it('empty', async () => {
+    setMock(async () => ({ data: [] }))
+
     render(<TodoList />)
 
-    expect(await screen.findByText('No data')).toBeDefined()
+    expect(await screen.findAllByText('No data')).toHaveLength(2)
   })
 
   it('with data', async () => {
-    mockedData = [{ title: 'test' }]
+    setMock(async () => ({ data: [{ title: 'test' }] }))
 
     render(<TodoList />)
 
-    expect(await screen.findByText('test')).toBeDefined()
+    expect(await screen.findByText('test')).not.toBeNull()
   })
 })
