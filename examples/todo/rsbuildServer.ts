@@ -1,7 +1,13 @@
 import { createRsbuild, loadConfig } from '@rsbuild/core'
-import { resolve } from 'node:path'
+import { dirname, resolve } from 'node:path'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { existsSync, readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+import {createRequire } from 'node:module'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+const require = createRequire(import.meta.url)
 
 let rsbuildServer: Awaited<
   ReturnType<Awaited<ReturnType<typeof createRsbuild>>['createDevServer']>
@@ -25,7 +31,7 @@ export async function renderHtml() {
   if (existsSync(prebuiltPath)) {
     console.log('Using prebuilt file', prebuiltPath)
     const template = readFileSync(resolve(__dirname, 'dist/index.html')).toString()
-    const { render } = await import(prebuiltPath)
+    const { render } = require(prebuiltPath)
     return template.replace('<!--app-content-->', render())
   }
 
