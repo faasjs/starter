@@ -1,38 +1,34 @@
 {
-  "name": "@faasjs-starter/api",
+  "name": "@faasjs/starter",
   "private": true,
+  "type": "module",
   "version": "1.0.0",
   "scripts": {
     "dev": "FaasLog=debug faas server -c",
-    "test": "jest --forceExit",
-    "ci": "jest --forceExit --coverage --ci"
+    "test": "SECRET_KNEX_CONNECTION=postgresql://testing@pg_testing1/testing vitest run",
+    "ci": "vitest run --coverage --silent"
   },
   "dependencies": {
-    "@faasjs/knex": "*",
-    "faasjs": "*",
+    "@faasjs/knex": "beta",
+    "faasjs": "beta",
     "pg": "*",
     "uuid": "*",
     "@rsbuild/core": "*",
     "@rsbuild/plugin-react": "*",
-    "@faasjs/ant-design": "*",
-    "zod": "*"
+    "@faasjs/ant-design": "beta",
+    "zod": "*",
+    "tsx": "*"
   },
   "devDependencies": {
+    "@types/node": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@faasjs/lint": "*",
-    "@faasjs/jest": "*",
-    "@faasjs/test": "*",
+    "@faasjs/lint": "beta",
+    "@faasjs/test": "beta",
     "@testing-library/react": "*",
-    "@happy-dom/jest-environment": "*"
-  },
-  "jest": {
-    "transform": {
-      ".(jsx|tsx?)": "@faasjs/jest"
-    },
-    "moduleNameMapper": {
-      "^lodash-es$": "lodash"
-    },
-    "setupFilesAfterEnv": ["@faasjs/jest/jest.setup.js", "./libs/jest.setup.ts"]
+    "vitest": "*",
+    "happy-dom": "*",
+    "@vitejs/plugin-react": "*",
+    "@vitest/coverage-v8": "*"
   }
 }

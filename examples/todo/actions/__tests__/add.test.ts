@@ -1,6 +1,7 @@
 import { query } from '@faasjs/knex'
 import { test } from '@faasjs/test'
 import Func from '../add.func'
+import { describe, expect, it } from 'vitest'
 
 describe('add', () => {
   it('should work', async () => {

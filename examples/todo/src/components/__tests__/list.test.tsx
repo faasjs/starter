@@ -1,9 +1,11 @@
 /**
- * @jest-environment @happy-dom/jest-environment
+ * @vitest-environment happy-dom
  */
+
 import { render, screen } from '@testing-library/react'
 import { TodoList } from '../TodoList'
 import { setMock } from '@faasjs/browser'
+import { describe, expect, it } from 'vitest'
 
 describe('TodoList', () => {
 

@@ -1,31 +1,30 @@
+import { vi, beforeEach, afterAll } from 'vitest'
+
 if (globalThis.window) {
   Object.defineProperty(globalThis.window, 'matchMedia', {
     writable: true,
-    value: jest.fn().mockImplementation(query => ({
+    value: vi.fn().mockImplementation(query => ({
       matches: false,
       media: query,
       onchange: null,
-      addListener: jest.fn(),
-      removeListener: jest.fn(),
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn(),
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
     })),
   })
 } else {
-  const { loadConfig } = require('@faasjs/load')
-  const { readFileSync } = require('node:fs')
-  const knex = require('knex')
-  const { useHttp } = require('@faasjs/http')
-  const { useKnex } = require('@faasjs/knex')
-
-  if (!process.env.SECRET_KNEX_CONNECTION)
-    process.env.SECRET_KNEX_CONNECTION = `postgresql://testing@pg_testing${process.env.JEST_WORKER_ID}/testing`
+  const { loadConfig } = await import('@faasjs/load')
+  const { readFileSync } = await import('node:fs')
+  const { default: knex } = await import('knex')
+  const { useHttp } = await import('@faasjs/http')
+  const { useKnex } = await import('@faasjs/knex')
 
   if (!process.env.SECRET_HTTP_COOKIE_SESSION_SECRET)
     process.env.SECRET_HTTP_COOKIE_SESSION_SECRET = 'secret'
 
-  const config = loadConfig(`${__dirname}/..`, '', 'testing')
+  const config = loadConfig(__dirname, '', 'testing')
 
   let schema: string
   let tables: string[]
@@ -34,9 +33,9 @@ if (globalThis.window) {
     process.stdout.write(`${message}\n`)
   }
 
-  global.beforeEach(async () => {
+  beforeEach(async () => {
     if (!schema) {
-      schema = readFileSync(`${__dirname}/../schema.sql`).toString()
+      schema = readFileSync(`${__dirname}/schema.sql`).toString()
 
       const db = knex({
         client: 'pg',
@@ -71,7 +70,7 @@ if (globalThis.window) {
     }
   })
 
-  global.afterAll(async () => {
+  afterAll(async () => {
     await useKnex().quit()
   })
 }
