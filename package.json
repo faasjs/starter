@@ -9,13 +9,13 @@
     "ci": "vitest run --coverage --silent"
   },
   "dependencies": {
-    "@faasjs/knex": "beta",
-    "faasjs": "beta",
+    "@faasjs/knex": "*",
+    "faasjs": "*",
     "pg": "*",
     "uuid": "*",
     "@rsbuild/core": "*",
     "@rsbuild/plugin-react": "*",
-    "@faasjs/ant-design": "beta",
+    "@faasjs/ant-design": "*",
     "zod": "*",
     "tsx": "*"
   },
@@ -23,8 +23,8 @@
     "@types/node": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@faasjs/lint": "beta",
-    "@faasjs/test": "beta",
+    "@faasjs/lint": "*",
+    "@faasjs/test": "*",
     "@testing-library/react": "*",
     "vitest": "*",
     "happy-dom": "*",
