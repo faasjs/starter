@@ -4,9 +4,11 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "dev": "FaasLog=debug faas server -c",
+    "dev": "FaasLog=debug faas server",
     "test": "SECRET_KNEX_CONNECTION=postgresql://testing@pg_testing1/testing vitest run",
-    "ci": "vitest run --coverage --silent"
+    "ci": "vitest run --coverage --silent",
+    "build:rsbuild": "rsbuild build --config examples/todo/rsbuild/rsbuild.config.ts",
+    "build:vite": "vite build --config examples/todo/vite/vite.config.ts"
   },
   "dependencies": {
     "@faasjs/knex": "*",
@@ -29,6 +31,8 @@
     "vitest": "*",
     "happy-dom": "*",
     "@vitejs/plugin-react": "*",
-    "@vitest/coverage-v8": "*"
+    "@vitest/coverage-v8": "*",
+    "vite": "*",
+    "@ant-design/v5-patch-for-react-19": "*"
   }
 }

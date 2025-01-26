@@ -3,7 +3,9 @@ import { dirname, resolve } from 'node:path'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
-import {createRequire } from 'node:module'
+import { createRequire } from 'node:module'
+import type { Logger } from '@faasjs/logger'
+import { staticHandler } from '@faasjs/server'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -25,14 +27,21 @@ async function init() {
   rsbuildServer = await rsbuild.createDevServer()
 }
 
-export async function renderHtml() {
+export async function renderHtml(_: IncomingMessage, res: ServerResponse, logger: Logger) {
   const prebuiltPath = resolve(__dirname, 'dist/server/index.js')
 
   if (existsSync(prebuiltPath)) {
-    console.log('Using prebuilt file', prebuiltPath)
+    logger.debug('Using prebuilt file', prebuiltPath)
     const template = readFileSync(resolve(__dirname, 'dist/index.html')).toString()
     const { render } = require(prebuiltPath)
-    return template.replace('<!--app-content-->', render())
+
+    res.writeHead(200, {
+      'Content-Type': 'text/html',
+    })
+
+    res.end(template.replace('<!--app-content-->', render()))
+
+    return
   }
 
   if (!rsbuildServer) await init()
@@ -43,19 +52,25 @@ export async function renderHtml() {
   const template =
     await rsbuildServer.environments.web.getTransformedHtml('index')
 
-  return template.replace('<!--app-content-->', indexModule.render())
+  res.writeHead(200, {
+    'Content-Type': 'text/html',
+  })
+
+  res.end(template.replace('<!--app-content-->', indexModule.render()))
 }
 
-export async function handle(req: IncomingMessage, res: ServerResponse) {
-  if (req.url.includes('/static/')) {
-    const prebuiltPath = resolve(
-      __dirname + req.url.replace('/examples/todo/static/', '/dist/static/')
-    )
-    if (existsSync(prebuiltPath)) {
-      console.log('Using prebuilt file', prebuiltPath)
-      res.end(readFileSync(prebuiltPath).toString())
-      return
-    }
+export async function handle(req: IncomingMessage, res: ServerResponse, logger: Logger) {
+  const prebuiltPath = `${__dirname}/dist/static/` as `${string}/`
+  if (existsSync(prebuiltPath)) {
+    logger.debug('Using prebuilt file', prebuiltPath)
+
+    req.url = req.url.replace('/examples/todo/rsbuild/static/', '/')
+
+    await staticHandler({
+      root: prebuiltPath,
+    })(req as any, res, logger)
+
+    return
   }
 
   if (!rsbuildServer) await init()

@@ -1,7 +1,7 @@
 import { defineConfig } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
 
-const publicPath = '/examples/todo/'
+const publicPath = '/examples/todo/rsbuild/'
 
 export default defineConfig({
   plugins: [pluginReact()],
@@ -17,7 +17,7 @@ export default defineConfig({
       },
       source: {
         entry: {
-          index: './src/entry-client',
+          index: '../src/entry-client',
         },
       },
     },
@@ -32,13 +32,13 @@ export default defineConfig({
       },
       source: {
         entry: {
-          index: './src/entry-server',
+          index: '../src/entry-server',
         },
       },
     },
   },
   html: {
-    template: './src/index.html',
+    template: '../src/index.html',
   },
   tools: {
     rspack: {

@@ -1,3 +1,4 @@
+import '@ant-design/v5-patch-for-react-19'
 import { TodoList } from './components/TodoList'
 import { notification, Typography } from 'antd'
 import { FaasReactClient } from '@faasjs/react'
