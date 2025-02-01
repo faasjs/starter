@@ -62,9 +62,9 @@ export async function handle(
 
   if (existsSync(prebuiltPath)) {
     logger.debug('Using prebuilt file', prebuiltPath)
-    req.url = req.url?.replace('/examples/todo/vite/assets/', '/')
     await staticHandler({
       root: prebuiltPath,
+      stripPrefix: '/examples/todo/vite/assets/',
     })(req as any, res, logger)
     return
   }

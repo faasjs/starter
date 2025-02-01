@@ -64,10 +64,9 @@ export async function handle(req: IncomingMessage, res: ServerResponse, logger: 
   if (existsSync(prebuiltPath)) {
     logger.debug('Using prebuilt file', prebuiltPath)
 
-    req.url = req.url.replace('/examples/todo/rsbuild/static/', '/')
-
     await staticHandler({
       root: prebuiltPath,
+      stripPrefix: '/examples/todo/rsbuild/static/',
     })(req as any, res, logger)
 
     return
