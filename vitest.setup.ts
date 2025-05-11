@@ -1,3 +1,4 @@
+import { join } from 'node:path'
 import { vi, beforeEach, afterAll } from 'vitest'
 
 if (globalThis.window) {
@@ -24,7 +25,7 @@ if (globalThis.window) {
   if (!process.env.SECRET_HTTP_COOKIE_SESSION_SECRET)
     process.env.SECRET_HTTP_COOKIE_SESSION_SECRET = 'secret'
 
-  const config = loadConfig(__dirname, '', 'testing')
+  const config = loadConfig(join(__dirname, 'src'), '', 'testing')
 
   let schema: string
   let tables: string[]
@@ -39,7 +40,7 @@ if (globalThis.window) {
 
       const db = knex({
         client: 'pg',
-        connection: process.env.SECRET_KNEX_CONNECTION,
+        connection: process.env.SECRET_KNEX_CONNECTION as string,
       })
 
       await db.raw('DROP SCHEMA IF EXISTS public CASCADE;CREATE SCHEMA public;')
@@ -48,14 +49,14 @@ if (globalThis.window) {
 
       await useHttp().mount()
       await useKnex({
-        config: config.plugins.knex.config,
+        config: config.plugins!.knex.config!,
       }).mount()
     }
 
     try {
       const db = knex({
         client: 'pg',
-        connection: process.env.SECRET_KNEX_CONNECTION,
+        connection: process.env.SECRET_KNEX_CONNECTION as string,
       })
 
       if (!tables)
