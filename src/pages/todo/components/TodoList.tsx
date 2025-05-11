@@ -31,7 +31,7 @@ export const TodoList = withFaasData<
                   return
                 }
                 modal.destroy()
-                await faas('examples/todo/actions/add', { title })
+                await faas('todo/actions/add', { title })
                 await props.reload()
               },
               cancelText: 'Cancel',
@@ -54,7 +54,7 @@ export const TodoList = withFaasData<
                       color: 'var(--ant-success-color)',
                     }}
                     onClick={async () =>
-                      faas('examples/todo/actions/done', {
+                      faas('todo/actions/done', {
                         id: item.id,
                       }).finally(async () => props.reload())
                     }
@@ -64,7 +64,7 @@ export const TodoList = withFaasData<
                     key='undo'
                     style={{ cursor: 'pointer' }}
                     onClick={async () =>
-                      faas('examples/todo/actions/undo', {
+                      faas('todo/actions/undo', {
                         id: item.id,
                       }).finally(async () => props.reload())
                     }
@@ -72,12 +72,13 @@ export const TodoList = withFaasData<
                 ),
               ]}
             >
-              <Typography.Text
-                delete={item.status === 'done'}
-                type={item.status === 'done' ? 'secondary' : undefined}
+              {item.status === 'done' ? <Typography.Text
+                type='secondary'
               >
                 {item.title}
-              </Typography.Text>
+              </Typography.Text> : (
+                <Typography.Text>{item.title}</Typography.Text>
+              )}
             </List.Item>
           )}
         />
@@ -85,6 +86,6 @@ export const TodoList = withFaasData<
     )
   },
   {
-    action: 'examples/todo/actions/list',
+    action: 'todo/actions/list',
   }
 )

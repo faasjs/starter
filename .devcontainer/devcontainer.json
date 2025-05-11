@@ -3,27 +3,11 @@
 	"dockerComposeFile": "docker-compose.yaml",
 	"service": "app",
 	"workspaceFolder": "/root/app",
-	"forwardPorts": [
-		3000,
-		3001
-	],
-	"portsAttributes": {
-    "3000": {
-      "label": "www",
-      "onAutoForward": "openPreview"
-    },
-		"3001": {
-      "label": "api"
-    }
-  },
-	"otherPortsAttributes": {
-    "onAutoForward": "ignore"
-  },
 	"remoteUser": "root",
 	"mounts": [
-    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
-    "source=node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
-  ],
+		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+		"source=node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+	],
 	"customizations": {
 		"vscode": {
 			"settings": {
@@ -53,6 +37,5 @@
 				"oven.bun-vscode"
 			]
 		}
-	},
-  "waitFor": "onCreateCommand"
+	}
 }

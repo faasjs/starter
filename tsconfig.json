@@ -1,13 +1,11 @@
 {
+  "extends": "faasjs/tsconfig.build",
   "compilerOptions": {
-    "strict": true,
-    "composite": true,
-    "downlevelIteration": true,
-    "esModuleInterop": true,
-    "strictNullChecks": false,
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "jsx": "react-jsx"
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+    }
   }
 }
