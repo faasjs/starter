@@ -25,8 +25,22 @@ A starter template for [FaasJS](https://faasjs.com).
 2. Install VS Code extension: `ms-vscode-remote.vscode-remote-extensionpack`.
 3. In VS Code, click `F1` then choose `Remote-Containers: Reopen in Container`.
 4. In VS Code, open a new terminal `ni && nd` (shorten command of `npm install && npm run dev`).
-5. Open `http://localhost:3000/` in browser.
+5. Open `http://localhost:5173/` in browser.
 
 ### Test
 
-`nt` (shorten command of `npm run test`)
+Run `nt` (shorten command of `npm run test`).
+
+### Preview
+
+1. Run `nb` (shorten command of `npm run build`), this will build frontend by Vite.
+2. Run `nr server` (shorten command of `npm run server`), this will start the server.
+3. Open `http://localhost:3000/` in browser.
+
+### Deploy
+
+#### with Docker
+
+1. Run `docker build -t faasjs-starter .` to build the Docker image.
+2. Run `docker run -p 3000:3000 faasjs-starter` to start the container.
+3. Open `http://localhost:3000/` in browser.
