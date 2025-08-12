@@ -20,7 +20,7 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with:
           cache: npm
