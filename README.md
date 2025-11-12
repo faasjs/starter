@@ -33,8 +33,8 @@ Run `nt` (shorten command of `npm run test`).
 
 ### Preview
 
-1. Run `nb` (shorten command of `npm run build`), this will build frontend by Vite.
-2. Run `nr server` (shorten command of `npm run server`), this will start the server.
+1. Run `nb` (shorten command of `npm run build`) to build the frontend by Vite.
+2. Run `nr server` (shorten command of `npm run server`) to start the server.
 3. Open `http://localhost:3000/` in browser.
 
 ### Deploy
@@ -44,3 +44,7 @@ Run `nt` (shorten command of `npm run test`).
 1. Run `docker build -t faasjs-starter .` to build the Docker image.
 2. Run `docker run -p 3000:3000 faasjs-starter` to start the container.
 3. Open `http://localhost:3000/` in browser.
+
+#### locally
+
+Same as preview.
