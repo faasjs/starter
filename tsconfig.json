@@ -1,6 +1,7 @@
 {
   "extends": "faasjs/tsconfig.build",
   "compilerOptions": {
+    "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
       "@/*": [
