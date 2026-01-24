@@ -1,5 +1,5 @@
 import { join } from 'node:path'
-import { vi, beforeEach, afterAll } from 'vitest'
+import { afterAll, beforeEach, vi } from 'vitest'
 
 if (globalThis.window) {
   Object.defineProperty(globalThis.window, 'matchMedia', {

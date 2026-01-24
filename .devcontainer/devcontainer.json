@@ -1,41 +1,41 @@
 {
-	"name": "faasjs-starter-dev",
-	"dockerComposeFile": "docker-compose.yaml",
-	"service": "app",
-	"workspaceFolder": "/root/app",
-	"remoteUser": "root",
-	"mounts": [
-		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
-		"source=node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
-	],
-	"customizations": {
-		"vscode": {
-			"settings": {
-				"terminal.integrated.defaultProfile.linux": "zsh"
-			},
-			"extensions": [
-				"eamodio.gitlens",
-				"zfben.faasjs-snippets",
-				"mtxr.sqltools",
-				"mtxr.sqltools-driver-pg",
-				"streetsidesoftware.code-spell-checker",
-				"biomejs.biome",
-				"oven.bun-vscode"
-			]
-		},
-		"codespaces": {
-			"settings": {
-				"terminal.integrated.defaultProfile.linux": "zsh"
-			},
-			"extensions": [
-				"eamodio.gitlens",
-				"zfben.faasjs-snippets",
-				"mtxr.sqltools",
-				"mtxr.sqltools-driver-pg",
-				"streetsidesoftware.code-spell-checker",
-				"biomejs.biome",
-				"oven.bun-vscode"
-			]
-		}
-	}
+  "name": "faasjs-starter-dev",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "app",
+  "workspaceFolder": "/root/app",
+  "remoteUser": "root",
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+    "source=node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      },
+      "extensions": [
+        "eamodio.gitlens",
+        "zfben.faasjs-snippets",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-pg",
+        "streetsidesoftware.code-spell-checker",
+        "biomejs.biome",
+        "oven.bun-vscode"
+      ]
+    },
+    "codespaces": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      },
+      "extensions": [
+        "eamodio.gitlens",
+        "zfben.faasjs-snippets",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-pg",
+        "streetsidesoftware.code-spell-checker",
+        "biomejs.biome",
+        "oven.bun-vscode"
+      ]
+    }
+  }
 }

@@ -3,8 +3,7 @@
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "quickfix.biome": "explicit"
+    "source.fixAll.biome": "explicit"
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -54,12 +53,8 @@
       "driver": "PostgreSQL",
       "name": "testing",
       "connectString": "postgresql://testing@pg_testing1/testing"
-    },
+    }
   ],
-  "cSpell.words": [
-    "antd",
-    "faas",
-    "faasjs"
-  ],
+  "cSpell.words": ["antd", "faas", "faasjs"],
   "typescript.tsdk": "node_modules/typescript/lib"
 }

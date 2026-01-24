@@ -1,6 +1,6 @@
-import { Button, Input, List, Modal, Typography, message } from 'antd'
 import { CheckOutlined, UndoOutlined } from '@ant-design/icons'
 import { faas, withFaasData } from '@faasjs/ant-design'
+import { Button, Input, List, Modal, message, Typography } from 'antd'
 
 export const TodoList = withFaasData<
   {
@@ -72,11 +72,9 @@ export const TodoList = withFaasData<
                 ),
               ]}
             >
-              {item.status === 'done' ? <Typography.Text
-                type='secondary'
-              >
-                {item.title}
-              </Typography.Text> : (
+              {item.status === 'done' ? (
+                <Typography.Text type='secondary'>{item.title}</Typography.Text>
+              ) : (
                 <Typography.Text>{item.title}</Typography.Text>
               )}
             </List.Item>

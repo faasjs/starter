@@ -1,6 +1,6 @@
 import { useFunc } from '@faasjs/func'
 import { useHttp } from '@faasjs/http'
-import { useKnex, query } from '@faasjs/knex'
+import { query, useKnex } from '@faasjs/knex'
 import type { InferFaasAction } from '@faasjs/types'
 import { z } from 'zod'
 

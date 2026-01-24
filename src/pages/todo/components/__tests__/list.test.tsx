@@ -2,14 +2,12 @@
  * @vitest-environment happy-dom
  */
 
-import { render, screen } from '@testing-library/react'
-import { TodoList } from '../TodoList'
 import { setMock } from '@faasjs/browser'
+import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
+import { TodoList } from '../TodoList'
 
 describe('TodoList', () => {
-
-
   it('empty', async () => {
     setMock(async () => ({ data: [] }))
 

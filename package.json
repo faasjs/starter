@@ -8,30 +8,44 @@
     "build": "vite build",
     "test": "SECRET_KNEX_CONNECTION=postgresql://testing@pg_testing1/testing vitest run",
     "ci": "vitest run --coverage --silent",
-    "server": "tsx server.ts"
+    "server": "node server.ts",
+    "lint": "biome check . --write"
   },
   "dependencies": {
-    "@faasjs/knex": "*",
-    "faasjs": "*",
+    "@faasjs/knex": "^8.0.0-beta.0",
+    "faasjs": "^8.0.0-beta.0",
     "pg": "*",
     "uuid": "*",
-    "@faasjs/ant-design": "*",
+    "@faasjs/ant-design": "^8.0.0-beta.0",
+    "@faasjs/react": "^8.0.0-beta.0",
     "zod": "*",
-    "tsx": "*"
+    "tsx": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-router-dom": "*",
+    "antd": "*",
+    "lodash-es": "*"
   },
   "devDependencies": {
     "@types/node": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@faasjs/vite": "*",
-    "@faasjs/lint": "*",
-    "@faasjs/test": "*",
+    "@faasjs/vite": "^8.0.0-beta.0",
+    "@faasjs/lint": "^8.0.0-beta.0",
+    "@faasjs/test": "^8.0.0-beta.0",
+    "@faasjs/load": "^8.0.0-beta.0",
+    "@faasjs/http": "^8.0.0-beta.0",
+    "@faasjs/deep_merge": "^8.0.0-beta.0",
+    "@faasjs/logger": "^8.0.0-beta.0",
+    "@faasjs/browser": "^8.0.0-beta.0",
+    "@faasjs/func": "^8.0.0-beta.0",
     "@testing-library/react": "*",
+    "@testing-library/dom": "*",
     "vitest": "*",
     "happy-dom": "*",
     "@vitejs/plugin-react": "*",
     "@vitest/coverage-v8": "*",
     "vite": "*",
-    "@ant-design/v5-patch-for-react-19": "*"
+    "js-yaml": "*"
   }
 }

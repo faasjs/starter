@@ -1,5 +1,5 @@
-import { TodoList } from './components/TodoList'
 import { Typography } from 'antd'
+import { TodoList } from './components/TodoList'
 
 export default function TodoHome() {
   return (
