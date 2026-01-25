@@ -1,5 +1,4 @@
-import { useFunc } from '@faasjs/func'
-import { useHttp } from '@faasjs/http'
+import { useHttpFunc } from '@faasjs/http'
 import { query, useKnex } from '@faasjs/knex'
 import type { InferFaasAction } from '@faasjs/types'
 import { z } from 'zod'
@@ -10,20 +9,15 @@ const schema = z
   })
   .required()
 
-const func = useFunc<
-  { params: z.infer<typeof schema> },
-  unknown,
-  { id: string }
->(() => {
-  useHttp()
+const func = useHttpFunc<z.infer<typeof schema>, { id: string }>(() => {
   useKnex()
 
-  return async ({ event }) => {
-    schema.parse(event.params)
+  return async ({ params }) => {
+    const parsed = schema.parse(params)
 
     const ids = await query('todo_items')
       .insert({
-        title: event.params.title,
+        title: parsed.title,
         status: 'pending',
       })
       .returning('id')
