@@ -14,6 +14,23 @@ export default defineConfig({
     }),
   ],
   test: {
-    setupFiles: ['./vitest.setup.ts'],
+    projects: [
+      {
+        extends: true,
+        test: {
+          include: ['src/**/*.test.ts'],
+          environment: 'node',
+          setupFiles: ['vitest.node.setup.ts'],
+        },
+      },
+      {
+        extends: true,
+        test: {
+          include: ['src/**/*.test.tsx'],
+          environment: 'jsdom',
+          setupFiles: ['vitest.jsdom.setup.ts'],
+        },
+      },
+    ],
   },
 })

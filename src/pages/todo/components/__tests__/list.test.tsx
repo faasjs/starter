@@ -1,7 +1,3 @@
-/**
- * @vitest-environment happy-dom
- */
-
 import { setMock } from '@faasjs/browser'
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'

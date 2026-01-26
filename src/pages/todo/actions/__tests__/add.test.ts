@@ -1,11 +1,11 @@
 import { query } from '@faasjs/knex'
 import { test } from '@faasjs/test'
 import { describe, expect, it } from 'vitest'
-import Func from '../add.func'
+import { func } from '../add.func'
 
 describe('add', () => {
   it('should work', async () => {
-    const { statusCode, data } = await test(Func).JSONhandler({
+    const { statusCode, data } = await test(func).JSONhandler({
       title: 'title',
     })
 

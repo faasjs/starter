@@ -1,44 +1,44 @@
 {
-  "name": "@faasjs/starter",
-  "private": true,
-  "type": "module",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "test": "SECRET_KNEX_CONNECTION=postgresql://testing@pg_testing1/testing vitest run",
-    "ci": "vitest run --coverage --silent",
-    "server": "node server.ts",
-    "lint": "biome check . --write"
-  },
-  "dependencies": {
-    "@faasjs/knex": "^8.0.0-beta.0",
-    "faasjs": "^8.0.0-beta.0",
-    "pg": "*",
-    "uuid": "*",
-    "@faasjs/ant-design": "^8.0.0-beta.0",
-    "@faasjs/react": "^8.0.0-beta.0",
-    "zod": "*",
-    "lodash-es": "*"
-  },
-  "devDependencies": {
-    "@types/node": "*",
-    "@types/react": "*",
-    "@types/react-dom": "*",
-    "@faasjs/vite": "^8.0.0-beta.0",
-    "@faasjs/lint": "^8.0.0-beta.0",
-    "@faasjs/test": "^8.0.0-beta.0",
-    "@faasjs/load": "^8.0.0-beta.0",
-    "@faasjs/http": "^8.0.0-beta.0",
-    "@faasjs/deep_merge": "^8.0.0-beta.0",
-    "@faasjs/logger": "^8.0.0-beta.0",
-    "@faasjs/browser": "^8.0.0-beta.0",
-    "@faasjs/func": "^8.0.0-beta.0",
-    "@testing-library/react": "*",
-    "@testing-library/dom": "*",
-    "vitest": "*",
-    "happy-dom": "*",
-    "@vitejs/plugin-react": "*",
-    "@vitest/coverage-v8": "*"
-  }
+	"name": "@faasjs/starter",
+	"private": true,
+	"type": "module",
+	"version": "1.0.0",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"test": "SECRET_KNEX_CONNECTION=postgresql://testing@pg_testing1/testing vitest run",
+		"ci": "vitest run --coverage --silent",
+		"server": "node server.ts",
+		"lint": "biome check . --write"
+	},
+	"dependencies": {
+		"@faasjs/knex": "^8.0.0-beta.1",
+		"faasjs": "^8.0.0-beta.1",
+		"pg": "*",
+		"uuid": "*",
+		"@faasjs/ant-design": "^8.0.0-beta.1",
+		"@faasjs/react": "^8.0.0-beta.1",
+		"zod": "*",
+		"lodash-es": "*"
+	},
+	"devDependencies": {
+		"@types/node": "*",
+		"@types/react": "*",
+		"@types/react-dom": "*",
+		"@faasjs/vite": "^8.0.0-beta.1",
+		"@faasjs/lint": "^8.0.0-beta.1",
+		"@faasjs/test": "^8.0.0-beta.1",
+		"@faasjs/load": "^8.0.0-beta.1",
+		"@faasjs/http": "^8.0.0-beta.1",
+		"@faasjs/deep_merge": "^8.0.0-beta.1",
+		"@faasjs/logger": "^8.0.0-beta.1",
+		"@faasjs/browser": "^8.0.0-beta.1",
+		"@faasjs/func": "^8.0.0-beta.1",
+		"@testing-library/react": "*",
+		"@testing-library/dom": "*",
+		"vitest": "*",
+		"jsdom": "*",
+		"@vitejs/plugin-react": "*",
+		"@vitest/coverage-v8": "*"
+	}
 }

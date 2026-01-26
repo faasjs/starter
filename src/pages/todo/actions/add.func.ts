@@ -9,7 +9,7 @@ const schema = z
   })
   .required()
 
-const func = useHttpFunc<z.infer<typeof schema>, { id: string }>(() => {
+export const func = useHttpFunc<z.infer<typeof schema>, { id: string }>(() => {
   useKnex()
 
   return async ({ params }) => {
@@ -26,10 +26,8 @@ const func = useHttpFunc<z.infer<typeof schema>, { id: string }>(() => {
   }
 })
 
-export default func
-
 declare module '@faasjs/types' {
   interface FaasActions {
-    'examples/todo/actions/add': InferFaasAction<typeof func>
+    'todo/actions/add': InferFaasAction<typeof func>
   }
 }

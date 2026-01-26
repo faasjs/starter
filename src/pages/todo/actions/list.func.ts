@@ -1,9 +1,8 @@
-import { useFunc } from '@faasjs/func'
-import { useHttp } from '@faasjs/http'
+import { useHttp, useHttpFunc } from '@faasjs/http'
 import { query, useKnex } from '@faasjs/knex'
 import type { InferFaasAction } from '@faasjs/types'
 
-const func = useFunc(() => {
+export const func = useHttpFunc(() => {
   useHttp()
   useKnex()
 
@@ -13,10 +12,8 @@ const func = useFunc(() => {
     )
 })
 
-export default func
-
 declare module '@faasjs/types' {
   interface FaasActions {
-    'examples/todo/actions/list': InferFaasAction<typeof func>
+    'todo/actions/list': InferFaasAction<typeof func>
   }
 }
