@@ -1,7 +1,7 @@
 import { useHttpFunc } from '@faasjs/http'
 import { query, useKnex } from '@faasjs/knex'
 import type { InferFaasAction } from '@faasjs/types'
-import { z } from 'zod'
+import * as z from 'zod'
 
 const schema = z
   .object({
@@ -28,6 +28,6 @@ export const func = useHttpFunc<z.infer<typeof schema>, { id: string }>(() => {
 
 declare module '@faasjs/types' {
   interface FaasActions {
-    'todo/actions/add': InferFaasAction<typeof func>
+    'todo/api/add': InferFaasAction<typeof func>
   }
 }

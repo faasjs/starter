@@ -31,11 +31,23 @@ A starter template for [FaasJS](https://faasjs.com).
 
 Run `nt` (shorten command of `npm run test`).
 
+Tests use embedded PGlite in Node test setup, so no external PostgreSQL service is required for local runs.
+
 ### Preview
 
 1. Run `nb` (shorten command of `npm run build`) to build the frontend by Vite.
 2. Run `nr server` (shorten command of `npm run server`) to start the server.
 3. Open `http://localhost:3000/` in browser.
+
+## Zero-mapping API routing
+
+FaasJS Starter follows the zero-mapping rule: API file path equals API route path.
+
+- File: `src/pages/todo/api/list.func.ts`
+- Client action: `todo/api/list`
+- Request URL (with `baseUrl: '/pages/'`): `POST /pages/todo/api/list`
+
+Use `api/` as the API directory name. Avoid custom rewrites such as `actions -> api`.
 
 ### Deploy
 

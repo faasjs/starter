@@ -14,6 +14,6 @@ export const func = useHttpFunc(() => {
 
 declare module '@faasjs/types' {
   interface FaasActions {
-    'todo/actions/list': InferFaasAction<typeof func>
+    'todo/api/list': InferFaasAction<typeof func>
   }
 }

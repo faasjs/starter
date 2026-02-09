@@ -1,7 +1,7 @@
 import { useHttp, useHttpFunc } from '@faasjs/http'
 import { query, useKnex } from '@faasjs/knex'
 import type { InferFaasAction } from '@faasjs/types'
-import { z } from 'zod'
+import * as z from 'zod'
 
 const schema = z
   .object({
@@ -18,13 +18,13 @@ export const func = useHttpFunc<
   return async ({ params }) => {
     const parsed = schema.parse(params)
     await query('todo_items')
-      .update({ status: 'done' })
+      .update({ status: 'pending' })
       .where({ id: parsed.id })
   }
 })
 
 declare module '@faasjs/types' {
   interface FaasActions {
-    'todo/actions/done': InferFaasAction<typeof func>
+    'todo/api/undo': InferFaasAction<typeof func>
   }
 }

@@ -6,31 +6,33 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "test": "SECRET_KNEX_CONNECTION=postgresql://testing@pg_testing1/testing vitest run",
+    "test": "vitest run",
     "ci": "vitest run --coverage --silent",
     "server": "node server.ts",
     "lint": "biome check . --write"
   },
   "dependencies": {
+    "@faasjs/ant-design": "^8.0.0-beta.2",
     "@faasjs/knex": "^8.0.0-beta.2",
     "faasjs": "^8.0.0-beta.2",
+    "lodash-es": "*",
     "pg": "*",
     "uuid": "*",
-    "@faasjs/ant-design": "^8.0.0-beta.2",
-    "zod": "*",
-    "lodash-es": "*"
+    "zod": "*"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.3.15",
+    "@faasjs/lint": "^8.0.0-beta.2",
+    "@faasjs/vite": "^8.0.0-beta.2",
+    "@testing-library/dom": "*",
+    "@testing-library/react": "*",
     "@types/node": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@faasjs/vite": "^8.0.0-beta.2",
-    "@faasjs/lint": "^8.0.0-beta.2",
-    "@testing-library/react": "*",
-    "@testing-library/dom": "*",
-    "vitest": "*",
-    "jsdom": "*",
     "@vitejs/plugin-react": "*",
-    "@vitest/coverage-v8": "*"
+    "@vitest/coverage-v8": "*",
+    "jsdom": "*",
+    "knex-pglite": "^0.13.0",
+    "vitest": "*"
   }
 }

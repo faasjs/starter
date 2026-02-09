@@ -1,61 +1,71 @@
-import { join } from 'node:path'
-import { afterAll, beforeEach } from 'vitest'
-import { loadConfig } from '@faasjs/load'
 import { readFileSync } from 'node:fs'
+import { afterAll, beforeAll, beforeEach } from 'vitest'
 import { knex } from 'knex'
-import { useHttp } from '@faasjs/http'
-import { useKnex } from '@faasjs/knex'
+import PgliteDialect from 'knex-pglite'
+
+const globalWithFaasKnex = global as typeof global & {
+  FaasJS_Knex?: Record<
+    string,
+    {
+      adapter: ReturnType<typeof knex>
+      query: ReturnType<typeof knex>
+      config: Record<string, unknown>
+    }
+  >
+}
 
 if (!process.env.SECRET_HTTP_COOKIE_SESSION_SECRET)
   process.env.SECRET_HTTP_COOKIE_SESSION_SECRET = 'secret'
 
-const config = loadConfig(join(__dirname, 'src'), '', 'testing')
+const SCHEMA_FILE_PATH = `${__dirname}/schema.sql`
+const CREATE_UUID_GENERATE_V4_SQL = `
+CREATE OR REPLACE FUNCTION uuid_generate_v4()
+RETURNS TEXT AS $$
+SELECT
+  LOWER(
+    LPAD(TO_HEX(FLOOR(EXTRACT(EPOCH FROM NOW()) * 1000)::BIGINT), 12, '0') ||
+    LPAD(TO_HEX((RANDOM() * 65535)::BIGINT), 4, '0') ||
+    LPAD(TO_HEX((RANDOM() * 65535)::BIGINT), 4, '0') ||
+    LPAD(TO_HEX((RANDOM() * 65535)::BIGINT), 4, '0') ||
+    LPAD(TO_HEX((RANDOM() * 281474976710655)::BIGINT), 12, '0')
+  )
+$$ LANGUAGE SQL IMMUTABLE;
+`
 
-let schema: string
-let tables: string[]
+let db: ReturnType<typeof knex>
 
-function log(message: string) {
-  process.stdout.write(`${message}\n`)
-}
+beforeAll(async () => {
+  db = knex({
+    client: PgliteDialect,
+    connection: {},
+  })
 
-beforeEach(async () => {
-  if (!schema) {
-    schema = readFileSync(`${__dirname}/schema.sql`).toString()
+  const schema = readFileSync(SCHEMA_FILE_PATH, 'utf8').replace(
+    /CREATE EXTENSION IF NOT EXISTS "uuid-ossp";\s*/i,
+    ''
+  )
 
-    const db = knex({
-      client: 'pg',
-      connection: process.env.SECRET_KNEX_CONNECTION as string,
-    })
+  await db.raw(CREATE_UUID_GENERATE_V4_SQL)
+  await db.raw(schema)
 
-    await db.raw('DROP SCHEMA IF EXISTS public CASCADE;CREATE SCHEMA public;')
-    await db.raw(schema)
-    await db.destroy()
-
-    await useHttp().mount()
-    await useKnex({
-      // biome-ignore lint/style/noNonNullAssertion:
-      config: config.plugins!.knex.config!,
-    }).mount()
+  if (!globalWithFaasKnex.FaasJS_Knex) {
+    globalWithFaasKnex.FaasJS_Knex = {}
   }
 
-  try {
-    const db = knex({
-      client: 'pg',
-      connection: process.env.SECRET_KNEX_CONNECTION as string,
-    })
-
-    if (!tables)
-      tables = await db('pg_tables')
-        .where('schemaname', '=', 'public')
-        .pluck('tablename')
-
-    await db.raw(tables.map(t => `TRUNCATE ${t} RESTART IDENTITY`).join(';'))
-    await db.destroy()
-  } catch (error) {
-    log((error as Error)?.message)
+  globalWithFaasKnex.FaasJS_Knex.knex = {
+    adapter: db,
+    query: db,
+    config: {},
   }
 })
 
+beforeEach(async () => {
+  await db('todo_items').delete()
+})
+
 afterAll(async () => {
-  await useKnex().quit()
+  await db.destroy()
+  if (globalWithFaasKnex.FaasJS_Knex) {
+    delete globalWithFaasKnex.FaasJS_Knex.knex
+  }
 })

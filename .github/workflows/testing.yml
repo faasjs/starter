@@ -8,17 +8,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:alpine
-        env:
-          POSTGRES_DB: testing
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_HOST_AUTH_METHOD: trust
-        ports:
-          - 5432:5432
-        options: --health-cmd pg_isready
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v6
@@ -29,5 +18,3 @@ jobs:
         run: npm install
       - name: Test
         run: npm run ci
-        env:
-          SECRET_KNEX_CONNECTION: postgres://postgres:postgres@localhost:5432/testing
