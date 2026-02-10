@@ -1,4 +1,3 @@
-import { join } from 'node:path'
 import { viteFaasJsServer } from '@faasjs/vite'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vitest/config'
@@ -9,9 +8,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    viteFaasJsServer({
-      root: join(__dirname, 'src'),
-    }),
+    viteFaasJsServer(),
   ],
   test: {
     projects: [
