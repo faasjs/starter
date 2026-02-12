@@ -1,6 +1,9 @@
-import { viteFaasJsServer } from '@faasjs/vite'
+import { createRequire } from 'node:module'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vitest/config'
+
+const require = createRequire(import.meta.url)
+const { viteFaasJsServer } = require('@faasjs/dev') as typeof import('@faasjs/dev')
 
 export default defineConfig({
   server: {

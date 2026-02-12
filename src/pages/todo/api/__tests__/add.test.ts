@@ -1,5 +1,5 @@
+import { test } from '@faasjs/dev'
 import { query } from '@faasjs/knex'
-import { test } from '@faasjs/test'
 import { describe, expect, it } from 'vitest'
 import { func } from '../add.func'
 

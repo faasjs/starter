@@ -12,20 +12,18 @@
     "lint": "biome check . --write"
   },
   "dependencies": {
-    "@faasjs/ant-design": "^8.0.0-beta.4",
-    "@faasjs/knex": "^8.0.0-beta.4",
-    "@faasjs/server": "^8.0.0-beta.4",
-    "faasjs": "^8.0.0-beta.4",
+    "@faasjs/ant-design": "^8.0.0-beta.5",
+    "@faasjs/knex": "^8.0.0-beta.5",
+    "@faasjs/server": "^8.0.0-beta.5",
+    "faasjs": "^8.0.0-beta.5",
     "lodash-es": "*",
     "pg": "*",
     "uuid": "*",
     "zod": "*"
   },
   "devDependencies": {
-    "@electric-sql/pglite": "^0.3.15",
-    "@faasjs/lint": "^8.0.0-beta.4",
-    "@faasjs/test": "^8.0.0-beta.4",
-    "@faasjs/vite": "^8.0.0-beta.4",
+    "@faasjs/dev": "^8.0.0-beta.5",
+    "@faasjs/lint": "^8.0.0-beta.5",
     "@testing-library/dom": "*",
     "@testing-library/react": "*",
     "@types/node": "*",
@@ -33,8 +31,6 @@
     "@types/react-dom": "*",
     "@vitejs/plugin-react": "*",
     "@vitest/coverage-v8": "*",
-    "jsdom": "*",
-    "knex-pglite": "^0.13.0",
-    "vitest": "*"
+    "jsdom": "*"
   }
 }
