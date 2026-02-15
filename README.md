@@ -31,7 +31,24 @@ A starter template for [FaasJS](https://faasjs.com).
 
 Run `nt` (shorten command of `npm run test`).
 
+Run `npm run test:types` to check action params/data type inference regressions.
+
+`npm run ci` runs coverage with the Node binary next to `npm`, avoiding Bun `node` shims that do not support V8 coverage APIs.
+
 Tests use embedded PGlite in Node test setup, so no external PostgreSQL service is required for local runs.
+
+### Development Database
+
+- `src/faas.yaml` sets `defaults.plugins.knex.config.client` to `pg` with a default pool.
+- `development.plugins.knex.config.client` uses `pglite` with persisted storage at `./.pglite_dev`.
+- `testing.plugins.knex.config.client` uses `pglite` in-memory (no `connection`).
+- `production` still uses PostgreSQL (`client: pg`).
+
+### Type Generation
+
+- Run `npm run typegen` to generate action/event types into `src/.faasjs/types.d.ts`.
+- `npm run typegen` wraps `faas-types` and patches generated params extraction to avoid `unknown` inference.
+- `npm run dev` uses `viteFaasJsServer()`, which auto-generates on startup and regenerates when `.func.ts` or `src/faas.yaml` changes.
 
 ### Preview
 
@@ -44,8 +61,10 @@ Tests use embedded PGlite in Node test setup, so no external PostgreSQL service 
 FaasJS Starter follows the zero-mapping rule: API file path equals API route path.
 
 - File: `src/pages/todo/api/list.func.ts`
-- Client action: `todo/api/list`
-- Request URL (with `baseUrl: '/pages/'`): `POST /pages/todo/api/list`
+- Client action: `/pages/todo/api/list`
+- Request URL (with `baseUrl: '/'`): `POST /pages/todo/api/list`
+
+Use action paths with a leading slash (for example: `/pages/todo/api/list`) so TypeScript can match generated `FaasActions` keys.
 
 Use `api/` as the API directory name. Avoid custom rewrites such as `actions -> api`.
 

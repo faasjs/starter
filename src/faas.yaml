@@ -1,4 +1,7 @@
 defaults:
+  server:
+    root: .
+    base: /
   plugins:
     http:
       config:
@@ -13,5 +16,18 @@ defaults:
           min: 0
           max: 10
 development:
+  plugins:
+    knex:
+      config:
+        client: pglite
+        connection: ./.pglite_dev
 testing:
+  plugins:
+    knex:
+      config:
+        client: pglite
 production:
+  plugins:
+    knex:
+      config:
+        client: pg

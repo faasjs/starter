@@ -7,23 +7,26 @@
     "dev": "vite",
     "build": "vite build",
     "test": "vitest run",
-    "ci": "vitest run --coverage --silent",
+    "typecheck": "tsc --noEmit",
+    "test:types": "npm run typegen && npm run typecheck",
+    "ci": "npm run test:types && \"$(dirname $(command -v npm))/node\" ./node_modules/vitest/vitest.mjs run --coverage --silent",
     "server": "node server.ts",
+    "typegen": "node scripts/typegen.mjs",
     "lint": "biome check . --write"
   },
   "dependencies": {
-    "@faasjs/ant-design": "^8.0.0-beta.5",
-    "@faasjs/knex": "^8.0.0-beta.5",
-    "@faasjs/server": "^8.0.0-beta.5",
-    "faasjs": "^8.0.0-beta.5",
+    "@faasjs/ant-design": "^8.0.0-beta.6",
+    "@faasjs/knex": "^8.0.0-beta.6",
+    "@faasjs/server": "^8.0.0-beta.6",
+    "faasjs": "^8.0.0-beta.6",
     "lodash-es": "*",
     "pg": "*",
     "uuid": "*",
     "zod": "*"
   },
   "devDependencies": {
-    "@faasjs/dev": "^8.0.0-beta.5",
-    "@faasjs/lint": "^8.0.0-beta.5",
+    "@faasjs/dev": "^8.0.0-beta.6",
+    "@faasjs/lint": "^8.0.0-beta.6",
     "@testing-library/dom": "*",
     "@testing-library/react": "*",
     "@types/node": "*",
@@ -31,6 +34,9 @@
     "@types/react-dom": "*",
     "@vitejs/plugin-react": "*",
     "@vitest/coverage-v8": "*",
-    "jsdom": "*"
+    "@electric-sql/pglite": "*",
+    "jsdom": "*",
+    "knex-pglite": "*",
+    "typescript": "*"
   }
 }

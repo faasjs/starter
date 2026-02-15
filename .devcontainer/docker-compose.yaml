@@ -7,8 +7,6 @@ services:
       dockerfile: ./Dockerfile
     command: sleep infinity
     tty: true
-    environment:
-      SECRET_KNEX_CONNECTION: postgresql://development@pg/development
     volumes:
       - ..:/root/app:delegated
       - ~/.zsh_history:/root/.zsh_history:delegated

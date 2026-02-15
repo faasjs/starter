@@ -1,6 +1,5 @@
 import { defineFunc } from '@faasjs/func'
 import { query } from '@faasjs/knex'
-import type { InferFaasAction } from '@faasjs/types'
 import * as z from 'zod'
 
 const schema = z
@@ -17,9 +16,3 @@ export const func = defineFunc<{ params?: z.infer<typeof schema> }>(
       .where({ id: parsed.id })
   }
 )
-
-declare module '@faasjs/types' {
-  interface FaasActions {
-    'todo/api/done': InferFaasAction<typeof func>
-  }
-}
