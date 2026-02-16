@@ -3,16 +3,14 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vitest/config'
 
 const require = createRequire(import.meta.url)
-const { viteFaasJsServer } = require('@faasjs/dev') as typeof import('@faasjs/dev')
+const { viteFaasJsServer } =
+  require('@faasjs/dev') as typeof import('@faasjs/dev')
 
 export default defineConfig({
   server: {
     host: '0.0.0.0',
   },
-  plugins: [
-    react(),
-    viteFaasJsServer(),
-  ],
+  plugins: [react(), viteFaasJsServer()],
   test: {
     projects: [
       {

@@ -1,5 +1,5 @@
-import { faas } from '../faas'
 import type { FaasParams } from '@faasjs/types'
+import { faas } from '../faas'
 
 type AddParams = FaasParams<'/pages/todo/api/add'>
 

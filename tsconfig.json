@@ -1,5 +1,5 @@
 {
-  "extends": "faasjs/tsconfig.build",
+  "extends": "./node_modules/@faasjs/types/tsconfig/build.json",
   "compilerOptions": {
     "moduleResolution": "bundler",
     "baseUrl": ".",

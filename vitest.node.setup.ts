@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
-import { afterAll, beforeAll, beforeEach } from 'vitest'
 import { knex } from 'knex'
 import PgliteDialect from 'knex-pglite'
+import { afterAll, beforeAll, beforeEach } from 'vitest'
 
 const globalWithFaasKnex = global as typeof global & {
   FaasJS_Knex?: Record<

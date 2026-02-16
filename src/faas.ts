@@ -1,10 +1,16 @@
 import { faas as rawFaas } from '@faasjs/ant-design'
-import type { FaasAction, FaasActionPaths, FaasParams } from '@faasjs/types'
+import type { FaasActionPaths, FaasParams } from '@faasjs/types'
+
+const callFaas = rawFaas as (
+  action: string,
+  params?: Record<string, any>,
+  options?: Parameters<typeof rawFaas>[2]
+) => ReturnType<typeof rawFaas>
 
 export function faas<TAction extends FaasActionPaths>(
   action: TAction,
   params: FaasParams<TAction>,
   options?: Parameters<typeof rawFaas>[2]
 ) {
-  return rawFaas<TAction>(action as FaasAction<TAction>, params, options)
+  return callFaas(action, params as Record<string, any>, options)
 }

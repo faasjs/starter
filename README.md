@@ -47,7 +47,6 @@ Tests use embedded PGlite in Node test setup, so no external PostgreSQL service 
 ### Type Generation
 
 - Run `npm run typegen` to generate action/event types into `src/.faasjs/types.d.ts`.
-- `npm run typegen` wraps `faas-types` and patches generated params extraction to avoid `unknown` inference.
 - `npm run dev` uses `viteFaasJsServer()`, which auto-generates on startup and regenerates when `.func.ts` or `src/faas.yaml` changes.
 
 ### Preview

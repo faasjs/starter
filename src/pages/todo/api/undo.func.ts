@@ -1,6 +1,5 @@
-import { defineFunc } from '@faasjs/func'
+import { defineFunc, z } from '@faasjs/core'
 import { query } from '@faasjs/knex'
-import * as z from 'zod'
 
 const schema = z
   .object({
@@ -8,11 +7,18 @@ const schema = z
   })
   .required()
 
-export const func = defineFunc<{ params?: z.infer<typeof schema> }>(
-  async ({ event }) => {
-    const parsed = schema.parse(event.params || {})
+export const func = defineFunc<
+  typeof schema,
+  { params: z.infer<typeof schema> }
+>({
+  schema,
+  async handler({ params }) {
+    if (!params) {
+      throw new Error('params are required')
+    }
+
     await query('todo_items')
       .update({ status: 'pending' })
-      .where({ id: parsed.id })
-  }
-)
+      .where({ id: params.id })
+  },
+})
