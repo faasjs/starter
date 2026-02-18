@@ -32,7 +32,7 @@ export const TodoList = withFaasData<
                   return
                 }
                 modal.destroy()
-                await faas('/pages/todo/api/add', { title })
+                await faas('pages/todo/api/add', { title })
                 await props.reload()
               },
               cancelText: 'Cancel',
@@ -55,7 +55,7 @@ export const TodoList = withFaasData<
                       color: 'var(--ant-success-color)',
                     }}
                     onClick={async () =>
-                      faas('/pages/todo/api/done', {
+                      faas('pages/todo/api/done', {
                         id: item.id,
                       }).finally(async () => props.reload())
                     }
@@ -65,7 +65,7 @@ export const TodoList = withFaasData<
                     key='undo'
                     style={{ cursor: 'pointer' }}
                     onClick={async () =>
-                      faas('/pages/todo/api/undo', {
+                      faas('pages/todo/api/undo', {
                         id: item.id,
                       }).finally(async () => props.reload())
                     }
@@ -85,6 +85,6 @@ export const TodoList = withFaasData<
     )
   },
   {
-    action: '/pages/todo/api/list',
+    action: 'pages/todo/api/list',
   }
 )

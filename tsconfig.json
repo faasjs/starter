@@ -4,16 +4,20 @@
     "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
   "include": [
     "src",
-    "src/.faasjs/**/*.d.ts",
     "server.ts",
-    "types.d.ts",
     "vite.config.ts",
     "vitest.*.setup.ts"
   ],
-  "exclude": ["coverage", "dist", "node_modules"]
+  "exclude": [
+    "coverage",
+    "dist",
+    "node_modules"
+  ]
 }

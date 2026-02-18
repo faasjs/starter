@@ -1,71 +1,35 @@
-import { readFileSync } from 'node:fs'
-import { knex } from 'knex'
-import PgliteDialect from 'knex-pglite'
+import { type Knex, KnexSchema, type OriginKnex, useKnex } from '@faasjs/knex'
+import { loadConfig } from '@faasjs/node-utils'
 import { afterAll, beforeAll, beforeEach } from 'vitest'
-
-const globalWithFaasKnex = global as typeof global & {
-  FaasJS_Knex?: Record<
-    string,
-    {
-      adapter: ReturnType<typeof knex>
-      query: ReturnType<typeof knex>
-      config: Record<string, unknown>
-    }
-  >
-}
 
 if (!process.env.SECRET_HTTP_COOKIE_SESSION_SECRET)
   process.env.SECRET_HTTP_COOKIE_SESSION_SECRET = 'secret'
 
-const SCHEMA_FILE_PATH = `${__dirname}/schema.sql`
-const CREATE_UUID_GENERATE_V4_SQL = `
-CREATE OR REPLACE FUNCTION uuid_generate_v4()
-RETURNS TEXT AS $$
-SELECT
-  LOWER(
-    LPAD(TO_HEX(FLOOR(EXTRACT(EPOCH FROM NOW()) * 1000)::BIGINT), 12, '0') ||
-    LPAD(TO_HEX((RANDOM() * 65535)::BIGINT), 4, '0') ||
-    LPAD(TO_HEX((RANDOM() * 65535)::BIGINT), 4, '0') ||
-    LPAD(TO_HEX((RANDOM() * 65535)::BIGINT), 4, '0') ||
-    LPAD(TO_HEX((RANDOM() * 281474976710655)::BIGINT), 12, '0')
-  )
-$$ LANGUAGE SQL IMMUTABLE;
-`
-
-let db: ReturnType<typeof knex>
+let db: Knex | undefined
 
 beforeAll(async () => {
-  db = knex({
-    client: PgliteDialect,
-    connection: {},
+  const config = loadConfig('./src', '', 'testing')
+  const knexConfig = config.plugins?.knex?.config as
+    | OriginKnex.Config
+    | undefined
+
+  if (!knexConfig)
+    throw Error(`[migrate:make] Missing knex config in faas.yaml for testing`)
+  const db = useKnex({
+    config: knexConfig,
   })
 
-  const schema = readFileSync(SCHEMA_FILE_PATH, 'utf8').replace(
-    /CREATE EXTENSION IF NOT EXISTS "uuid-ossp";\s*/i,
-    ''
-  )
+  await db.mount()
 
-  await db.raw(CREATE_UUID_GENERATE_V4_SQL)
-  await db.raw(schema)
+  const schema = new KnexSchema(db)
 
-  if (!globalWithFaasKnex.FaasJS_Knex) {
-    globalWithFaasKnex.FaasJS_Knex = {}
-  }
-
-  globalWithFaasKnex.FaasJS_Knex.knex = {
-    adapter: db,
-    query: db,
-    config: {},
-  }
+  await schema.migrateLatest()
 })
 
 beforeEach(async () => {
-  await db('todo_items').delete()
+  await db?.query('todo_items').delete()
 })
 
 afterAll(async () => {
-  await db.destroy()
-  if (globalWithFaasKnex.FaasJS_Knex) {
-    delete globalWithFaasKnex.FaasJS_Knex.knex
-  }
+  await db?.quit()
 })

@@ -2,7 +2,7 @@ export type TodoItem = {
   id: string
   title: string
   status: 'pending' | 'done'
-  createdAt: string
+  created_at: Date
 }
 
 declare module 'knex/types/tables' {

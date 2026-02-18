@@ -43,6 +43,11 @@ Tests use embedded PGlite in Node test setup, so no external PostgreSQL service 
 - `development.plugins.knex.config.client` uses `pglite` with persisted storage at `./.pglite_dev`.
 - `testing.plugins.knex.config.client` uses `pglite` in-memory (no `connection`).
 - `production` still uses PostgreSQL (`client: pg`).
+- Run `npm run migrate:latest` to apply pending migrations (prints batch and files).
+- Run `npm run migrate:rollback` to rollback the latest migration batch (prints batch and files).
+- Run `npm run migrate:status` to print pending migration count.
+- Run `npm run migrate:current` to print current migration version.
+- Run `npm run migrate:make -- create_todo_items` to generate a migration file in `src/db/migrations`.
 
 ### Type Generation
 
